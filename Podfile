@@ -6,17 +6,17 @@ inhibit_all_warnings!
 target 'FQYHub' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 
-  pod 'Moya/RxSwift', '~> 13.0'  # https://github.com/Moya/Moya
-  pod 'ReachabilitySwift', '~> 4.0'  # https://github.com/ashleymills/Reachability.swift
+  pod 'Moya/RxSwift'  # https://github.com/Moya/Moya
+  pod 'ReachabilitySwift'   # https://github.com/ashleymills/Reachability.swift
 
   # Rx Extensions
-  pod 'RxDataSources', '~> 3.0'  # https://github.com/RxSwiftCommunity/RxDataSources
-  pod 'RxSwiftExt', '~> 3.0'  # https://github.com/RxSwiftCommunity/RxSwiftExt
-  pod 'NSObject+Rx', '~> 4.0'  # https://github.com/RxSwiftCommunity/NSObject-Rx
-  pod 'RxViewController', '~> 0.3'  # https://github.com/devxoul/RxViewController
-  pod 'RxGesture', '~> 2.0'  # https://github.com/RxSwiftCommunity/RxGesture
-  pod 'RxOptional', '~> 3.0'  # https://github.com/RxSwiftCommunity/RxOptional
-  pod 'RxTheme', '~> 3.0'  # https://github.com/RxSwiftCommunity/RxTheme
+  pod 'RxDataSources'  # https://github.com/RxSwiftCommunity/RxDataSources
+  pod 'RxSwiftExt'  # https://github.com/RxSwiftCommunity/RxSwiftExt
+  pod 'NSObject+Rx'  # https://github.com/RxSwiftCommunity/NSObject-Rx
+  pod 'RxViewController'  # https://github.com/devxoul/RxViewController
+  pod 'RxGesture'  # https://github.com/RxSwiftCommunity/RxGesture
+  pod 'RxOptional'  # https://github.com/RxSwiftCommunity/RxOptional
+  pod 'RxTheme'  # https://github.com/RxSwiftCommunity/RxTheme
   pod 'Moya-ObjectMapper/RxSwift', :git => 'https://github.com/khoren93/Moya-ObjectMapper.git', :branch => 'moya13'  # https://github.com/ivanbruel/Moya-ObjectMapper
   pod 'Kingfisher', '~> 5.0'  # https://github.com/onevcat/Kingfisher
   pod 'SnapKit', '~> 5.0'  # https://github.com/SnapKit/SnapKit

@@ -29,6 +29,12 @@
 		8B077DF222C4C56B000EED2D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF122C4C56B000EED2D /* API.swift */; };
 		8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF422C4C848000EED2D /* TrendingAPI.swift */; };
 		8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */; };
+		8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */; };
+		8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */; };
+		8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80322CDEE52006FB3AC /* MineViewController.swift */; };
+		8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80522CDF632006FB3AC /* ThemeManager.swift */; };
+		8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */; };
+		8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80922CE00FE006FB3AC /* BaseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +61,12 @@
 		8B077DF122C4C56B000EED2D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8B077DF422C4C848000EED2D /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Operators.swift"; sourceTree = "<group>"; };
+		8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		8BDEE80322CDEE52006FB3AC /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		8BDEE80522CDF632006FB3AC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoriesCell.swift; sourceTree = "<group>"; };
+		8BDEE80922CE00FE006FB3AC /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		D4A2D619C084A2334CE2EDCB /* Pods-FQYHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FQYHub.debug.xcconfig"; path = "Target Support Files/Pods-FQYHub/Pods-FQYHub.debug.xcconfig"; sourceTree = "<group>"; };
 		D86DFFCB6D5AE58E07A3C085 /* Pods-FQYHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FQYHub.release.xcconfig"; path = "Target Support Files/Pods-FQYHub/Pods-FQYHub.release.xcconfig"; sourceTree = "<group>"; };
 		E243D855936C3EFCD501CA63 /* Pods_FQYHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FQYHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +122,8 @@
 		8B077DB722C45EAD000EED2D /* FQYHub */ = {
 			isa = PBXGroup;
 			children = (
+				8BDEE7FB22CDECA4006FB3AC /* NavigationController */,
+				8BDEE7F822CDEC89006FB3AC /* Root */,
 				8B077DD122C466F9000EED2D /* Network */,
 				8B077DD022C466EB000EED2D /* Main */,
 				8B077DCF22C466E3000EED2D /* Models */,
@@ -138,6 +152,7 @@
 		8B077DCB22C464ED000EED2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8BDEE80922CE00FE006FB3AC /* BaseCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -166,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				8B077DE822C4AC5C000EED2D /* ReachabilityManager.swift */,
+				8BDEE80522CDF632006FB3AC /* ThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -181,6 +197,7 @@
 		8B077DD022C466EB000EED2D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				8BDEE7FE22CDEE23006FB3AC /* Mine */,
 				8B077DE022C4A84F000EED2D /* Trending */,
 			);
 			path = Main;
@@ -212,6 +229,7 @@
 		8B077DE122C4A85A000EED2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +264,62 @@
 				8B077DF422C4C848000EED2D /* TrendingAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		8BDEE7F822CDEC89006FB3AC /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		8BDEE7FB22CDECA4006FB3AC /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		8BDEE7FE22CDEE23006FB3AC /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				8BDEE80222CDEE37006FB3AC /* Controller */,
+				8BDEE80122CDEE32006FB3AC /* ViewModel */,
+				8BDEE80022CDEE2D006FB3AC /* Model */,
+				8BDEE7FF22CDEE29006FB3AC /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		8BDEE7FF22CDEE29006FB3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BDEE80022CDEE2D006FB3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BDEE80122CDEE32006FB3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8BDEE80222CDEE37006FB3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8BDEE80322CDEE52006FB3AC /* MineViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,11 +482,14 @@
 			files = (
 				8B077DD522C469D1000EED2D /* UIViewController+Extension.swift in Sources */,
 				8B077DDF22C4A440000EED2D /* String+Extension.swift in Sources */,
+				8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */,
 				8B077DD322C4672E000EED2D /* UIView+Extension.swift in Sources */,
+				8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */,
 				8B077DEE22C4B6F0000EED2D /* TrendingViewModel.swift in Sources */,
 				8B077DEC22C4B648000EED2D /* Repository.swift in Sources */,
 				8B077DBB22C45EAD000EED2D /* ViewController.swift in Sources */,
 				8B077DE922C4AC5C000EED2D /* ReachabilityManager.swift in Sources */,
+				8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */,
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
 				8B077DDD22C4A351000EED2D /* GithubAPIs.swift in Sources */,
@@ -421,9 +498,12 @@
 				8B077DE522C4A88C000EED2D /* TrendingViewController.swift in Sources */,
 				8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */,
 				8B077DD922C46E3A000EED2D /* Configs.swift in Sources */,
+				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
 				8B077DDB22C475CE000EED2D /* User.swift in Sources */,
+				8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */,
+				8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -593,7 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

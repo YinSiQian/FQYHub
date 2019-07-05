@@ -13,4 +13,6 @@ import RxSwift
 protocol API {
     
     func trendingRepositories(language: String, since: String) -> Single<[TrendingRepository]>
+    
+    func trendingDevelopers(language: String, since: String) -> Single<[TrendingUser]>
 }

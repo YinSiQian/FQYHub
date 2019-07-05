@@ -38,6 +38,7 @@ struct Configs {
         static let borderWidth: CGFloat = 1
         static let segmentHeight = 44
         static let tableRowHeight = 44
+        static let space: CGFloat = 10
     }
     
     struct Network {

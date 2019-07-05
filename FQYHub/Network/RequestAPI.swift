@@ -16,6 +16,7 @@ import RxCocoa
 
 
 class RequestAPI: API {
+
     
     let trendingProvider: TrendingRequest
     
@@ -30,7 +31,11 @@ class RequestAPI: API {
 extension RequestAPI {
     
     func trendingRepositories(language: String, since: String) -> Single<[TrendingRepository]> {
-        return trendingRequestArray(TrendingAPI.trendingRepositories(language: language, since: since), T: TrendingRepository.self)
+        return trendingRequestArray(.trendingRepositories(language: language, since: since), T: TrendingRepository.self)
+    }
+    
+    func trendingDevelopers(language: String, since: String) -> Single<[TrendingUser]> {
+        return trendingRequestArray(.trendingDevelopers(language: language, since: since), T: TrendingUser.self)
     }
     
 }
@@ -41,7 +46,10 @@ extension RequestAPI {
         return trendingProvider.request(target)
                                .asObservable()
                                .mapArray(T.self)
-                               .asSingle()
+            .catchError({ (error) -> Observable<[T]> in
+                print("error handle----> \(error.localizedDescription)")
+                return Observable.just([])
+            }).asSingle()
         
     }
     

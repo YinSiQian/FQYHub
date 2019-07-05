@@ -15,6 +15,17 @@ import Moya
 
 
 
+public enum TrendingSearchTypeSegments: Int {
+    
+    case repositories, users
+    
+    var currentTitle: String {
+        switch self {
+        case .repositories: return "Repositories"
+        case .users: return "User"
+        }
+    }
+}
 
 public enum TrendingSegments: Int {
     
@@ -48,39 +59,30 @@ let trendingProvider = MoyaProvider<TrendingAPI>()
 
 class TrendingViewModel: NSObject {
     
-    var trendingSegmentSelection: Observable<TrendingSegments> = Observable.just(TrendingSegments.daily)
+    var trendingSegmentSelection: Observable<TrendingSegments> = Observable<TrendingSegments>.of(.daily)
     
-    var trendingRepositoryResult: Observable<[TrendingRepository]> = Observable.just([])
+    var trendingRepositoryResult: Observable<[TrendingRepository]> = Observable.of([])
+    
+    var trendingUserResult: Observable<[TrendingUser]> = Observable.of([])
     
     let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking())
     
-    override init() {
+    init(selection: Observable<TrendingSegments>) {
         super.init()
-    }
-    
-    convenience init(selection: Observable<TrendingSegments>) {
-        self.init()
         self.trendingSegmentSelection = selection
-        trendingRepositoryResult = Observable.just([])
         
-        
-//        let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking())
-       
-        trendingSegmentSelection.flatMapLatest({ (segment) -> Observable<RxSwift.Event<[TrendingRepository]>> in
+        trendingRepositoryResult = trendingSegmentSelection.flatMapLatest { (segment) -> Observable<[TrendingRepository]> in
             let since = segment.paramValue
-
-            return self.provider.trendingRepositories(language: "", since: since).asObservable().materialize()
-
-        }).subscribe(onNext: { (event) in
-            switch event {
-            case .next(let items):
-                print("items--->\(items)")
-                self.trendingRepositoryResult = Observable.just(items)
-            default: break
-            }
-        }).disposed(by: DisposeBag())
-
-
+            
+            return self.provider.trendingRepositories(language: "", since: since).asObservable()
+        }
+        
+        trendingUserResult = trendingSegmentSelection.flatMapLatest { (segment) -> Observable<[TrendingUser]> in
+            let since = segment.paramValue
+            
+            return self.provider.trendingDevelopers(language: "", since: since).asObservable()
+        }
+    
     }
     
 }

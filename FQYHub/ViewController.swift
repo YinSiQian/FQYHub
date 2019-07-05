@@ -15,40 +15,40 @@ class ViewController: UIViewController {
     var options: Int? = 8
     
     var noValueOptions: Int?
+        
+    lazy var tableView: UITableView = {
+        let tb = UITableView(frame: self.view.bounds, style: .plain)
+        return tb
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let obserable = Observable<TrendingSegments>.just(TrendingSegments.daily)
+        let obserable = Observable<TrendingSegments>.of(.daily)
         let viewModel = TrendingViewModel(selection: obserable)
 
-        viewModel.trendingRepositoryResult.subscribe { (event) in
-            switch event {
-            case .next(let items):
-                print("items----> \(items)")
-                
-            default: break
-            }
-        }.disposed(by: DisposeBag())
+        view.addSubview(tableView)
+    
+        viewModel.trendingRepositoryResult.bind(to: tableView.rx.items) {
+            (tableView, row, element) in
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+            cell.textLabel?.text = element.name
+            cell.detailTextLabel?.text = element.name
+            return cell
+        }.disposed(by: disposeBag)
         
         
         
         
         
         
-//        let provider = MoyaProvider<TrendingAPI>(plugins: [])
-//        provider.request(TrendingAPI.trendingRepositories(language: "", since: "daily")) { (result) in
-//            do {
-//                let response = try result.get()
-//                let value = try response.mapJSON()
-//
-//                print("value ----> \(value)")
-//            } catch {
-//
-//            }
-//        }
-//
+        
+        
+        let provider = MoyaProvider<TrendingAPI>(plugins: [])
+        provider.request(TrendingAPI.trendingRepositories(language: "", since: "daily")) { (result) in
+        }
+
     }
 
 

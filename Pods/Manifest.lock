@@ -62,15 +62,15 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh (~> 3.2.0)
   - Moya-ObjectMapper/RxSwift (from `https://github.com/khoren93/Moya-ObjectMapper.git`, branch `moya13`)
-  - Moya/RxSwift (~> 13.0)
-  - "NSObject+Rx (~> 4.0)"
-  - ReachabilitySwift (~> 4.0)
-  - RxDataSources (~> 3.0)
-  - RxGesture (~> 2.0)
-  - RxOptional (~> 3.0)
-  - RxSwiftExt (~> 3.0)
-  - RxTheme (~> 3.0)
-  - RxViewController (~> 0.3)
+  - Moya/RxSwift
+  - "NSObject+Rx"
+  - ReachabilitySwift
+  - RxDataSources
+  - RxGesture
+  - RxOptional
+  - RxSwiftExt
+  - RxTheme
+  - RxViewController
   - SnapKit (~> 5.0)
 
 SPEC REPOS:
@@ -131,6 +131,6 @@ SPEC CHECKSUMS:
   RxViewController: e93e7c233d5b5b62c32231d69726d55f54081bc6
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 6e3949a09d8758164ab3c99b3bb39465ba0cf6e3
+PODFILE CHECKSUM: fea3e1fd76f9558887d274b80f1c2acc4547ab60
 
 COCOAPODS: 1.6.2

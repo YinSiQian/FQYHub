@@ -12,6 +12,8 @@ import Alamofire
 import RxSwift
 import Security
 
+let disposeBag = DisposeBag()
+
 class NetworkManager<Target> where Target: Moya.TargetType {
     
     fileprivate let online: Observable<Bool>
@@ -29,12 +31,13 @@ class NetworkManager<Target> where Target: Moya.TargetType {
     }
     
     func request(_ token: Target) -> Observable<Moya.Response> {
-        let actualRequest = provider.rx.request(token)
+        let request = provider.rx.request(token)
         return online
             .ignore(value: false)  // Wait until we're online
             .take(1)        // Take 1 to make sure we only invoke the API once.
             .flatMap { _ in // Turn the online state into a network request
-                return actualRequest
+                
+                return request
                     .filterSuccessfulStatusCodes()
                     .do(onSuccess: { (response) in
                         
