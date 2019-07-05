@@ -172,6 +172,7 @@ class TrendingRepositoriesCell: UITableViewCell, BaseCellCommonFunc {
         ViewModel.language.drive(language.rx.text).disposed(by: disposeBag)
         ViewModel.stars.drive(starTotoalNum.rx.text).disposed(by: disposeBag)
         ViewModel.periodStars.drive(starPeriodNum.rx.text).disposed(by: disposeBag)
+        ViewModel.languageColor.drive(languageColor.rx.backgroundColor).disposed(by: disposeBag)
         ViewModel.avatarUlr.drive(onNext: { [weak self] (url) in
             self?.avatar.kf.setImage(with: url, placeholder: Configs.DefaultSetting.placeholderImage)
 
