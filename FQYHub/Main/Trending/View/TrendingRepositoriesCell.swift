@@ -8,8 +8,10 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
-class TrendingRepositoriesCell: BaseCell {
+class TrendingRepositoriesCell: UITableViewCell, BaseCellCommonFunc {
+    
 
     
     private var avatar: UIImageView!
@@ -26,22 +28,37 @@ class TrendingRepositoriesCell: BaseCell {
     
     private var languageColor: UIView!
     
+    private var separatorView: UIView!
+    
+    private var total_star: UIImageView!
+    
+    private var period_star: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupSubViews()
+        setupConstraints()
+    }
     
-    override func setupSubviews() {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupSubViews() {
         
         avatar = UIImageView()
-        avatar.layer.cornerRadius = 30
+        avatar.layer.cornerRadius = 25
         avatar.layer.masksToBounds = true
         contentView.addSubview(avatar)
         
         content = UILabel()
         content.textColor = LightTheme().textGray
         content.font = .systemFont(ofSize: 14)
-        content.numberOfLines = 0
+        content.numberOfLines = 4
         contentView.addSubview(content)
         
         name = UILabel()
@@ -51,33 +68,46 @@ class TrendingRepositoriesCell: BaseCell {
         
         starTotoalNum = UILabel()
         starTotoalNum.textColor = LightTheme().text
-        starTotoalNum.font = .systemFont(ofSize: 14)
+        starTotoalNum.font = .systemFont(ofSize: 12)
         contentView.addSubview(starTotoalNum)
         
         starPeriodNum = UILabel()
         starPeriodNum.textColor = LightTheme().textRed
-        starPeriodNum.font = .systemFont(ofSize: 14)
+        starPeriodNum.font = .systemFont(ofSize: 12)
         contentView.addSubview(starPeriodNum)
         
         language = UILabel()
         language.textColor = LightTheme().text
-        language.font = .systemFont(ofSize: 14)
+        language.font = .systemFont(ofSize: 12)
         contentView.addSubview(language)
         
         languageColor = UIView()
-        languageColor.layer.cornerRadius = 5
+        languageColor.layer.cornerRadius = 4
         languageColor.layer.masksToBounds = true
         contentView.addSubview(languageColor)
         
+        separatorView = UIView()
+        separatorView.backgroundColor = LightTheme().background
+        contentView.addSubview(separatorView)
+        
+        total_star = UIImageView()
+        total_star.image = UIImage(named: "icon_trend_t_star")
+        contentView.addSubview(total_star)
+        
+        period_star = UIImageView()
+        period_star.image = UIImage(named: "icon_trend_p_star")
+        contentView.addSubview(period_star)
+        
     }
     
-    override func setupConstraints() {
+    func setupConstraints() {
         
         let padding = Configs.BaseDimensions.inset
         let space = Configs.BaseDimensions.space
         
+        
         avatar.snp.makeConstraints { (make) in
-            make.width.height.equalTo(60)
+            make.width.height.equalTo(50)
             make.left.top.equalTo(self.contentView).offset(padding)
         }
         
@@ -93,27 +123,60 @@ class TrendingRepositoriesCell: BaseCell {
             make.right.equalTo(self.contentView).offset(-padding)
         }
         
-        starTotoalNum.snp.makeConstraints { (make) in
+        separatorView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalTo(self.contentView)
+            make.height.equalTo(12)
+        }
+        
+        
+        
+        total_star.snp.makeConstraints { (make) in
             make.top.equalTo(self.content.snp.bottom).offset(space)
             make.left.equalTo(self.avatar.snp.right).offset(space)
-            make.bottom.equalTo(self.contentView).offset(-padding)
+            make.bottom.equalTo(self.separatorView.snp.top).offset(-padding)
+        }
+        
+        starTotoalNum.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.total_star)
+            make.left.equalTo(self.total_star.snp.right).offset(4)
+        }
+        
+        period_star.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.total_star)
+            make.left.equalTo(self.starTotoalNum.snp.right).offset(20)
         }
         
         starPeriodNum.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.starTotoalNum)
-            make.left.equalTo(self.starTotoalNum.snp.right).offset(100)
+            make.centerY.equalTo(self.total_star)
+            make.left.equalTo(self.period_star.snp.right).offset(4)
         }
         
         languageColor.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.starTotoalNum)
-            make.width.height.equalTo(10)
-            make.left.equalTo(self.starPeriodNum.snp.right).offset(140)
+            make.width.height.equalTo(8)
+            make.left.equalTo(self.starPeriodNum.snp.right).offset(20)
         }
         
         language.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.languageColor)
-            make.left.equalTo(self.languageColor.snp.right).offset(2)
+            make.left.equalTo(self.languageColor.snp.right).offset(4)
         }
+    }
+    
+    
+    
+    public func bind(ViewModel: TrendingRepositoryCellViewModel) {
+        
+        ViewModel.name.drive(name.rx.text).disposed(by: disposeBag)
+        ViewModel.content.drive(content.rx.text).disposed(by: disposeBag)
+        ViewModel.language.drive(language.rx.text).disposed(by: disposeBag)
+        ViewModel.stars.drive(starTotoalNum.rx.text).disposed(by: disposeBag)
+        ViewModel.periodStars.drive(starPeriodNum.rx.text).disposed(by: disposeBag)
+        ViewModel.avatarUlr.drive(onNext: { [weak self] (url) in
+            self?.avatar.kf.setImage(with: url, placeholder: Configs.DefaultSetting.placeholderImage)
+
+        }).disposed(by: disposeBag)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

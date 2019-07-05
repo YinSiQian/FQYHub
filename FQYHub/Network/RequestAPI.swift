@@ -44,6 +44,7 @@ extension RequestAPI {
     
     private func trendingRequestArray<T: BaseMappable>(_ target: TrendingAPI, T: T.Type) -> Single<[T]> {
         return trendingProvider.request(target)
+                               .share(replay: 1)                                    
                                .asObservable()
                                .mapArray(T.self)
             .catchError({ (error) -> Observable<[T]> in

@@ -29,6 +29,12 @@
 		8B077DF222C4C56B000EED2D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF122C4C56B000EED2D /* API.swift */; };
 		8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF422C4C848000EED2D /* TrendingAPI.swift */; };
 		8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */; };
+		8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */; };
+		8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */; };
+		8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */; };
+		8B3F9FC222CF339F00D8A4AF /* TrendingUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FC122CF339F00D8A4AF /* TrendingUserCellViewModel.swift */; };
+		8B3F9FC422CF3E0800D8A4AF /* TrendingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FC322CF3E0800D8A4AF /* TrendingSection.swift */; };
+		8B3F9FC622CF43A000D8A4AF /* TrendingUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FC522CF43A000D8A4AF /* TrendingUserCell.swift */; };
 		8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */; };
 		8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */; };
 		8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80322CDEE52006FB3AC /* MineViewController.swift */; };
@@ -61,6 +67,12 @@
 		8B077DF122C4C56B000EED2D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8B077DF422C4C848000EED2D /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Operators.swift"; sourceTree = "<group>"; };
+		8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
+		8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
+		8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryCellViewModel.swift; sourceTree = "<group>"; };
+		8B3F9FC122CF339F00D8A4AF /* TrendingUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserCellViewModel.swift; sourceTree = "<group>"; };
+		8B3F9FC322CF3E0800D8A4AF /* TrendingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSection.swift; sourceTree = "<group>"; };
+		8B3F9FC522CF43A000D8A4AF /* TrendingUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserCell.swift; sourceTree = "<group>"; };
 		8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		8BDEE80322CDEE52006FB3AC /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				8BDEE80922CE00FE006FB3AC /* BaseCell.swift */,
+				8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */,
+				8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -230,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */,
+				8B3F9FC522CF43A000D8A4AF /* TrendingUserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				8B077DED22C4B6F0000EED2D /* TrendingViewModel.swift */,
+				8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */,
+				8B3F9FC122CF339F00D8A4AF /* TrendingUserCellViewModel.swift */,
+				8B3F9FC322CF3E0800D8A4AF /* TrendingSection.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -402,6 +420,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-FQYHub/Pods-FQYHub-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -427,6 +446,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -485,6 +505,7 @@
 				8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */,
 				8B077DD322C4672E000EED2D /* UIView+Extension.swift in Sources */,
 				8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */,
+				8B3F9FC622CF43A000D8A4AF /* TrendingUserCell.swift in Sources */,
 				8B077DEE22C4B6F0000EED2D /* TrendingViewModel.swift in Sources */,
 				8B077DEC22C4B648000EED2D /* Repository.swift in Sources */,
 				8B077DBB22C45EAD000EED2D /* ViewController.swift in Sources */,
@@ -496,14 +517,19 @@
 				8B077DB922C45EAD000EED2D /* AppDelegate.swift in Sources */,
 				8B077DD722C46ACB000EED2D /* UIColor+Extension.swift in Sources */,
 				8B077DE522C4A88C000EED2D /* TrendingViewController.swift in Sources */,
+				8B3F9FC422CF3E0800D8A4AF /* TrendingSection.swift in Sources */,
 				8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */,
 				8B077DD922C46E3A000EED2D /* Configs.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
 				8B077DDB22C475CE000EED2D /* User.swift in Sources */,
+				8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */,
 				8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */,
+				8B3F9FC222CF339F00D8A4AF /* TrendingUserCellViewModel.swift in Sources */,
+				8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */,
 				8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */,
+				8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +679,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -673,7 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -36,9 +36,13 @@ struct Configs {
         static let buttonHeight: CGFloat = 44
         static let cornerRadius: CGFloat = 6
         static let borderWidth: CGFloat = 1
-        static let segmentHeight = 44
+        static let segmentHeight: CGFloat = 44
         static let tableRowHeight = 44
         static let space: CGFloat = 10
+    }
+    
+    struct DefaultSetting {
+        static let placeholderImage = UIImage(named: "github")
     }
     
     struct Network {

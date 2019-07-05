@@ -24,19 +24,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        let obserable = Observable<TrendingSegments>.of(.daily)
-        let viewModel = TrendingViewModel(selection: obserable)
-
-        view.addSubview(tableView)
-    
-        viewModel.trendingRepositoryResult.bind(to: tableView.rx.items) {
-            (tableView, row, element) in
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-            cell.textLabel?.text = element.name
-            cell.detailTextLabel?.text = element.name
-            return cell
-        }.disposed(by: disposeBag)
+//        
+//        let obserable = Observable<TrendingSegments>.of(.daily)
+//        let viewModel = TrendingViewModel(selection: obserable)
+//
+//        view.addSubview(tableView)
+//    
+//        viewModel.trendingRepositoryResult.bind(to: tableView.rx.items) {
+//            (tableView, row, element) in
+//            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+//            cell.textLabel?.text = element.name
+//            cell.detailTextLabel?.text = element.name
+//            return cell
+//        }.disposed(by: disposeBag)
         
         
         

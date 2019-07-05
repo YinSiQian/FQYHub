@@ -14,7 +14,6 @@ import RxCocoa
 import Moya
 
 
-
 public enum TrendingSearchTypeSegments: Int {
     
     case repositories, users
@@ -34,11 +33,11 @@ public enum TrendingSegments: Int {
     var currentTitle: String {
         switch self {
         case .daily:
-            return "今天"
+            return "daily"
         case .weekly:
-            return "本周"
+            return "weekly"
         case .monthly:
-            return "本月"
+            return "monthly"
         }
     }
     
@@ -65,11 +64,17 @@ class TrendingViewModel: NSObject {
     
     var trendingUserResult: Observable<[TrendingUser]> = Observable.of([])
     
+    var trendingType: Observable<TrendingSearchTypeSegments> = Observable<TrendingSearchTypeSegments>.of(.repositories)
+    
     let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking())
     
-    init(selection: Observable<TrendingSegments>) {
+    var elements = BehaviorRelay<[TrendingSection]>(value: [])
+    
+    init(selection: Observable<TrendingSegments>,
+         trendingType: Observable<TrendingSearchTypeSegments>) {
         super.init()
         self.trendingSegmentSelection = selection
+        self.trendingType = trendingType
         
         trendingRepositoryResult = trendingSegmentSelection.flatMapLatest { (segment) -> Observable<[TrendingRepository]> in
             let since = segment.paramValue
@@ -82,6 +87,29 @@ class TrendingViewModel: NSObject {
             
             return self.provider.trendingDevelopers(language: "", since: since).asObservable()
         }
+        
+        Observable.combineLatest(trendingUserResult, trendingRepositoryResult, selection, trendingType).map { (userElements, repositoryElements, since, type) -> [TrendingSection] in
+            var elements: [TrendingSection] = []
+            switch type {
+                case .repositories:
+                    let repositories = repositoryElements.map({ (repository) -> TrendingSectionItem in
+                        let item = TrendingSectionItem.trendingRepositoriesItem(viewModel: TrendingRepositoryCellViewModel(with: repository, since: since))
+                        return item
+                    })
+                    if !repositories.isEmpty {
+                        elements.append(TrendingSection.repositories(items: repositories))
+                    }
+                
+                case .users:
+                    let users = userElements.map({ (user) -> TrendingSectionItem in
+                        return TrendingSectionItem.trendingUserItem(viewModel: TrendingUserCellViewModel(with: user))
+                    })
+                    if !users.isEmpty {
+                        elements.append(TrendingSection.users(items: users))
+                    }
+            }
+            return elements
+        }.bind(to: elements).disposed(by: disposeBag)
     
     }
     

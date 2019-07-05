@@ -23,6 +23,7 @@ target 'FQYHub' do
   pod 'MJRefresh', '~> 3.2.0'
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'JPush', '~> 3.2.0'
+  pod 'HMSegmentedControl', '~> 1.5.5'
 
 
 end
