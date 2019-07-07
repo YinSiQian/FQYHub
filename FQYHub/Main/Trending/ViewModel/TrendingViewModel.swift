@@ -54,8 +54,6 @@ public enum TrendingSegments: Int {
     
 }
 
-let trendingProvider = MoyaProvider<TrendingAPI>()
-
 class TrendingViewModel: NSObject {
     
     var trendingSegmentSelection: Observable<TrendingSegments> = Observable<TrendingSegments>.of(.daily)
@@ -66,12 +64,21 @@ class TrendingViewModel: NSObject {
     
     var trendingType: Observable<TrendingSearchTypeSegments> = Observable<TrendingSearchTypeSegments>.of(.repositories)
     
-    let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking())
+    let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking(), githubProvider: GithubRequest.githubNetworking())
     
+    let selectionItem: Driver<TrendingSectionItem>
+    
+    //output
     var elements = BehaviorRelay<[TrendingSection]>(value: [])
+
+    var userSelected = Driver<String>.just("")
+    
+    var repositorySelected = Driver<String>.just("")
     
     init(selection: Observable<TrendingSegments>,
-         trendingType: Observable<TrendingSearchTypeSegments>) {
+         trendingType: Observable<TrendingSearchTypeSegments>,
+         selectionItem: Driver<TrendingSectionItem>) {
+        self.selectionItem = selectionItem
         super.init()
         self.trendingSegmentSelection = selection
         self.trendingType = trendingType
@@ -110,6 +117,18 @@ class TrendingViewModel: NSObject {
             }
             return elements
         }.bind(to: elements).disposed(by: disposeBag)
+        
+        let repositorySelected = PublishSubject<String>()
+        let userSelected = PublishSubject<String>()
+        
+//        selectionItem.drive(onNext: { (item) in
+//            switch item {
+//                case .trendingRepositoriesItem(let viewModel):
+//                    repositorySelected.onNext(viewModel.name.map { $0 })
+//                case .trendingUserItem(let viewModel)
+//                    userSelected.onNext(viewModel.name.map { $0})
+//            }
+//        }).disposed(by: disposeBag)
     
     }
     

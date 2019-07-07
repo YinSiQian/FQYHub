@@ -20,8 +20,11 @@ class RequestAPI: API {
     
     let trendingProvider: TrendingRequest
     
-    init(trendingProvide: TrendingRequest) {
+    let githubProvider: GithubRequest
+    
+    init(trendingProvide: TrendingRequest, githubProvider: GithubRequest) {
         self.trendingProvider = trendingProvide
+        self.githubProvider = githubProvider
     }
     
     
@@ -37,7 +40,24 @@ extension RequestAPI {
     func trendingDevelopers(language: String, since: String) -> Single<[TrendingUser]> {
         return trendingRequestArray(.trendingDevelopers(language: language, since: since), T: TrendingUser.self)
     }
+}
+
+extension RequestAPI {
     
+    func repository(fullname: String) -> Single<Repository> {
+        return requestObject(.repository(fullName: fullname), T: Repository.self)
+    }
+    
+}
+
+extension RequestAPI {
+    
+    private func requestObject<T: BaseMappable>(_ target: GithubAPI, T: T.Type) -> Single<T> {
+        return githubProvider.request(target).asObservable().mapObject(T.self).catchError({ (error) -> Observable<T> in
+            print("error handle ----> \(error.localizedDescription)")
+            return Observable.of()
+        }).asSingle()
+    }
 }
 
 extension RequestAPI {
@@ -51,7 +71,6 @@ extension RequestAPI {
                 print("error handle----> \(error.localizedDescription)")
                 return Observable.just([])
             }).asSingle()
-        
     }
     
     

@@ -75,6 +75,23 @@ struct TrendingRequest: RequestType {
     let provider: NetworkManager<TrendingAPI>
 }
 
+struct GithubRequest: RequestType {
+    typealias T = GithubAPI
+    let provider: NetworkManager<GithubAPI>
+}
+
+extension RequestType {
+    static func githubNetworking() -> GithubRequest {
+        return GithubRequest(provider: newProvider([]))
+    }
+}
+
+extension GithubRequest {
+    func request(_ token: GithubAPI) -> Observable<Moya.Response> {
+        return self.provider.request(token)
+    }
+}
+
 extension RequestType {
     static func trendingNetworking() -> TrendingRequest {
         return TrendingRequest(provider: newProvider([]))

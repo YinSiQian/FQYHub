@@ -10,6 +10,8 @@ import UIKit
 
 class RepositoryDetailController: UIViewController {
 
+    var fullName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -23,6 +23,7 @@ class TrendingUserCell: UITableViewCell, BaseCellCommonFunc {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubViews()
         setupConstraints()
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {

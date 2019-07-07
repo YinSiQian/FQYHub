@@ -76,7 +76,9 @@ class TrendingViewController: UIViewController {
             return TrendingSegments(rawValue: index)!
         }
         
-        let viewModel = TrendingViewModel(selection: segmentSelected, trendingType: trendingType)
+        let viewModel = TrendingViewModel(selection: segmentSelected,
+                                          trendingType: trendingType,
+                                          selectionItem: tableView.rx.modelSelected(TrendingSectionItem.self).asDriver())
         
         let dataSource = RxTableViewSectionedReloadDataSource<TrendingSection>(configureCell:  { (data, tableView, indexPath, item) -> UITableViewCell in
             
@@ -93,6 +95,8 @@ class TrendingViewController: UIViewController {
         })
         
         viewModel.elements.asObservable().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        
+    
     }
     
 

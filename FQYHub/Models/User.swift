@@ -46,7 +46,10 @@ struct User: Mappable {
     
     // Only for User type
     var bio: String?  // The user's public profile bio.
-
+    
+    init() {
+        
+    }
     
     init?(map: Map) {}
     
