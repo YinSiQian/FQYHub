@@ -121,15 +121,29 @@ class TrendingViewModel: NSObject {
         let repositorySelected = PublishSubject<String>()
         let userSelected = PublishSubject<String>()
         
-//        selectionItem.drive(onNext: { (item) in
-//            switch item {
-//                case .trendingRepositoriesItem(let viewModel):
-//                    repositorySelected.onNext(viewModel.name.map { $0 })
-//                case .trendingUserItem(let viewModel)
-//                    userSelected.onNext(viewModel.name.map { $0})
-//            }
-//        }).disposed(by: disposeBag)
+        
+        selectionItem.drive(onNext: { (item) in
+            switch item {
+                case .trendingRepositoriesItem(let viewModel):
+                    viewModel.name.drive(onNext: { (fullName) in
+                        
+                        repositorySelected.onNext(fullName)
+                    }).disposed(by: disposeBag)
+                case .trendingUserItem(let viewModel):
+                    viewModel.name.drive(onNext: { (username) in
+                        userSelected.onNext(username)
+                    }).disposed(by: disposeBag)
+            }
+        }).disposed(by: disposeBag)
     
+        self.repositorySelected = repositorySelected.map({ (name) -> String in
+            return name
+        }).asDriverOnErrorJustComplete()
+        
+        self.userSelected = userSelected.map({ (name) -> String in
+            return name
+        }).asDriverOnErrorJustComplete()
+        
     }
     
 }

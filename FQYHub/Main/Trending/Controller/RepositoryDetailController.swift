@@ -8,9 +8,13 @@
 
 import UIKit
 
-class RepositoryDetailController: UIViewController {
+class RepositoryDetailController: BaseViewController {
 
-    var fullName: String = ""
+    var fullName: String = "" {
+        didSet {
+            title = fullName
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

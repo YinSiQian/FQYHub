@@ -96,7 +96,22 @@ class TrendingViewController: UIViewController {
         
         viewModel.elements.asObservable().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
-    
+        
+        viewModel.userSelected.drive(onNext: { (username) in
+            
+            print("user click \(username)" )
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.repositorySelected.drive(onNext: { (fullName) in
+            
+            print("repository click \(fullName)" )
+            
+            let detail = RepositoryDetailController()
+            detail.fullName = fullName
+            self.navigationController?.pushViewController(detail, animated: true)
+            
+        }).disposed(by: disposeBag)
     }
     
 
