@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import RxSwift
 
 class RepositoryDetailViewModel: NSObject {
     
-    let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking(), githubProvider: GithubRequest.githubNetworking())
+    var repo = Observable<Repository>.of()
     
-    
-    
+    init(with fullName: String) {
+        
+        repo = singleProvider.repository(fullname: fullName).asObservable()
+        
+    }
 }

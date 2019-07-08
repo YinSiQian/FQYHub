@@ -14,6 +14,8 @@ import Security
 
 let disposeBag = DisposeBag()
 
+let singleProvider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking(), githubProvider: GithubRequest.githubNetworking())
+
 class NetworkManager<Target> where Target: Moya.TargetType {
     
     fileprivate let online: Observable<Bool>
@@ -32,6 +34,9 @@ class NetworkManager<Target> where Target: Moya.TargetType {
     
     func request(_ token: Target) -> Observable<Moya.Response> {
         let request = provider.rx.request(token)
+        
+        print("url --->\(token.baseURL)\(token.path)")
+        
         return online
             .ignore(value: false)  // Wait until we're online
             .take(1)        // Take 1 to make sure we only invoke the API once.

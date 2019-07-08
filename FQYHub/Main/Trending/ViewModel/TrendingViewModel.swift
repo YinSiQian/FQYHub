@@ -64,7 +64,7 @@ class TrendingViewModel: NSObject {
     
     var trendingType: Observable<TrendingSearchTypeSegments> = Observable<TrendingSearchTypeSegments>.of(.repositories)
     
-    let provider = RequestAPI(trendingProvide: TrendingRequest.trendingNetworking(), githubProvider: GithubRequest.githubNetworking())
+    let provider = singleProvider
     
     let selectionItem: Driver<TrendingSectionItem>
     

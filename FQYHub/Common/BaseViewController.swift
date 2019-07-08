@@ -8,11 +8,13 @@
 
 import UIKit
 
+
+let kScreen_width = UIScreen.main.bounds.width
+let kScreen_height = UIScreen.main.bounds.height
+
 class BaseViewController: UIViewController {
 
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = LightTheme().background

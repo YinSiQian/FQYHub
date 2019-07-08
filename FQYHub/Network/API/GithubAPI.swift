@@ -21,7 +21,7 @@ extension GithubAPI: TargetType {
     var path: String {
         switch self {
         case .repository(let name):
-            return "repos/(\(name))"
+            return "repos/\(name)"
         }
     }
     
