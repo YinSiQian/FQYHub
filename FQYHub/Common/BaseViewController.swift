@@ -21,5 +21,8 @@ class BaseViewController: UIViewController {
 
     }
     
-
+    
+    deinit {
+        print("\(self) is dealloc")
+    }
 }

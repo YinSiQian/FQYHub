@@ -58,7 +58,7 @@ class WebViewController: BaseViewController {
             return
         }
         if path == "title" {
-            self.title = change?[NSKeyValueChangeKey.newKey] as? String ?? ""
+            self.title = change?[.newKey] as? String ?? ""
         }
         if path == "estimatedProgress" {
             self.progress.alpha = 1
