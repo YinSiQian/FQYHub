@@ -11,6 +11,7 @@ import Moya
 
 enum GithubAPI {
     case repository(fullName: String)
+    case user(owner: String)
 }
 
 extension GithubAPI: TargetType {
@@ -22,12 +23,16 @@ extension GithubAPI: TargetType {
         switch self {
         case .repository(let name):
             return "repos/\(name)"
+        case .user(let name):
+            return "users/\(name)"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .repository(fullName: _):
+            return .get
+        default:
             return .get
         }
     }
@@ -40,7 +45,8 @@ extension GithubAPI: TargetType {
         switch self {
         case .repository(fullName: _):
             return .requestPlain
-      
+        default:
+            return .requestPlain
         }
     }
     

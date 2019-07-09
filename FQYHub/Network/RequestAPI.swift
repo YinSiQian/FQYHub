@@ -48,6 +48,10 @@ extension RequestAPI {
         return requestObject(.repository(fullName: fullname), T: Repository.self)
     }
     
+    func user(owner: String) -> Single<User> {
+        return requestObject(.user(owner: owner), T: User.self)
+    }
+    
 }
 
 extension RequestAPI {

@@ -95,7 +95,7 @@ class RepositoryDetailController: BaseViewController {
     private func setupHeaderView() {
         
         let size = repo?.descriptionField?.calculate(font: .systemFont(ofSize: 14), size: CGSize(width: kScreen_width - 30, height: CGFloat(MAXFLOAT)))
-        let currentHeight = 155 + (size?.height ?? 0)
+        let currentHeight = 170 + (size?.height ?? 0)
         
         
         headerView = RepositoryHeaderView(frame: CGRect(x: 0, y: noticeView.bottom, width: kScreen_width, height: currentHeight))

@@ -29,6 +29,9 @@
 		8B077DF222C4C56B000EED2D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF122C4C56B000EED2D /* API.swift */; };
 		8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF422C4C848000EED2D /* TrendingAPI.swift */; };
 		8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */; };
+		8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */; };
+		8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */; };
+		8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */; };
 		8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */; };
 		8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */; };
 		8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */; };
@@ -76,6 +79,9 @@
 		8B077DF122C4C56B000EED2D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8B077DF422C4C848000EED2D /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Operators.swift"; sourceTree = "<group>"; };
+		8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
+		8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
 		8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryCellViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				8B077DD622C46ACB000EED2D /* UIColor+Extension.swift */,
 				8B077DDE22C4A440000EED2D /* String+Extension.swift */,
 				8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */,
+				8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 				8B3F9FC522CF43A000D8A4AF /* TrendingUserCell.swift */,
 				8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */,
 				8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */,
+				8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +297,7 @@
 			children = (
 				8B077DE422C4A88C000EED2D /* TrendingViewController.swift */,
 				8B3F9FCC22CF500700D8A4AF /* RepositoryDetailController.swift */,
+				8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 				8B077DDF22C4A440000EED2D /* String+Extension.swift in Sources */,
 				8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */,
 				8B077DD322C4672E000EED2D /* UIView+Extension.swift in Sources */,
+				8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */,
 				8B3F9FCD22CF500700D8A4AF /* RepositoryDetailController.swift in Sources */,
 				8B49E4ED22D3766E009D5E07 /* BaseViewController.swift in Sources */,
 				8B5BD5E122CF9BEB007EC605 /* Repository.swift in Sources */,
@@ -560,6 +570,7 @@
 				8B077DBB22C45EAD000EED2D /* ViewController.swift in Sources */,
 				8B077DE922C4AC5C000EED2D /* ReachabilityManager.swift in Sources */,
 				8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */,
+				8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */,
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
 				8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */,
@@ -579,6 +590,7 @@
 				8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */,
 				8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */,
 				8B3F9FC222CF339F00D8A4AF /* TrendingUserCellViewModel.swift in Sources */,
+				8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */,
 				8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */,
 				8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */,
 				8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */,

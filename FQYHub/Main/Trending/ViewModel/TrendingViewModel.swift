@@ -130,7 +130,7 @@ class TrendingViewModel: NSObject {
                         repositorySelected.onNext(fullName)
                     }).disposed(by: disposeBag)
                 case .trendingUserItem(let viewModel):
-                    viewModel.name.drive(onNext: { (username) in
+                    viewModel.username.drive(onNext: { (username) in
                         userSelected.onNext(username)
                     }).disposed(by: disposeBag)
             }

@@ -19,6 +19,7 @@ public class TrendingUserCellViewModel {
     let avatarUlr: Driver<URL?>
     let languageColor: Driver<UIColor>
     let language: Driver<String?>
+    let username: Driver<String>
     
     init(with user: TrendingUser) {
         self.user = user
@@ -27,6 +28,7 @@ public class TrendingUserCellViewModel {
         avatarUlr = Driver.just(user.avatar?.url)
         languageColor = Driver.just(UIColor.color(withHexString: user.repo?.languageColor))
         language = Driver.just(user.repo?.language)
+        username = Driver.just("\(user.username ?? "")")
     }
     
 }

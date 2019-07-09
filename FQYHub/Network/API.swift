@@ -17,4 +17,6 @@ protocol API {
     func trendingDevelopers(language: String, since: String) -> Single<[TrendingUser]>
     
     func repository(fullname: String) -> Single<Repository>
+    
+    func user(owner: String) -> Single<User>
 }

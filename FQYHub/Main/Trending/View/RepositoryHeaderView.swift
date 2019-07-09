@@ -117,7 +117,7 @@ class RepositoryHeaderView: UIView {
         
         avatar.snp.makeConstraints { (make) in
             make.centerX.equalTo(self)
-            make.top.equalTo(self).offset(padding)
+            make.top.equalTo(self).offset(padding * 2)
             make.height.width.equalTo(50)
         }
         

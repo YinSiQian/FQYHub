@@ -100,6 +100,10 @@ class TrendingViewController: UIViewController {
         viewModel.userSelected.drive(onNext: { (username) in
             
             print("user click \(username)" )
+            let user = UserInfoViewController()
+            user.title = username
+            user.username = username
+            self.navigationController?.pushViewController(user, animated: true)
             
         }).disposed(by: disposeBag)
         
