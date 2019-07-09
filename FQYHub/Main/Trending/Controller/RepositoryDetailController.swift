@@ -18,27 +18,60 @@ class RepositoryDetailController: BaseViewController {
         }
     }
     
+    var headerView: RepositoryHeaderView!
+    
+    lazy var tableView: UITableView = {
+        let tb = UITableView(frame: self.view.bounds, style: .plain)
+        tb.separatorStyle = .none
+        tb.delegate = self
+        tb.dataSource = self
+        tb.backgroundColor = LightTheme().background
+        return tb
+    }()
+    
+    var repo: Repository?
+    
     private var noticeView: UILabel!
+    
+    private var titles = [String]()
+    
+    private var contents = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.show(with: "loading...")
         setupSubviews()
         bindViewModel()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        noticeView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(self.view)
+            make.height.equalTo(40)
+            make.top.equalTo(self.view.safeAreaInsets.top)
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(self.view)
+            make.top.equalTo(noticeView.snp.bottom).offset(0)
+        }
+    }
+    
     private func setupSubviews() {
         
-        noticeView = UILabel(frame: CGRect(x: 0, y: 88, width: kScreen_width, height: 40))
+        view.addSubview(tableView)
+        
+        noticeView = UILabel()
         noticeView.text = "See more infomation about this repository >"
         noticeView.textAlignment = .center
         noticeView.font = .systemFont(ofSize: 14)
-        noticeView.textColor = LightTheme().text
+        noticeView.textColor = .white
         noticeView.backgroundColor = LightTheme().primary
         noticeView.isUserInteractionEnabled = true
         self.view.addSubview(noticeView)
         
         let tag = UITapGestureRecognizer(target: self, action: #selector(self.seeMoreInfo))
-        
         noticeView.addGestureRecognizer(tag)
         
     }
@@ -47,15 +80,68 @@ class RepositoryDetailController: BaseViewController {
         
         let viewModel = RepositoryDetailViewModel(with: fullName)
         
-        viewModel.repo.subscribe(onNext: { (repository) in
-            print(repository)
-        }).disposed(by: disposeBag)
+        viewModel.repo.subscribe(onNext: { (repo) in
+            self.repo = repo
+            self.setupHeaderView()
+        }, onError: { (error) in
+            self.view.hideHUD()
+            self.view.showFail(with: error.localizedDescription)
+        }) {
+            self.view.hideHUD()
+        }.disposed(by: disposeBag)
+        
+    }
+    
+    private func setupHeaderView() {
+        
+        let size = repo?.descriptionField?.calculate(font: .systemFont(ofSize: 14), size: CGSize(width: kScreen_width - 30, height: CGFloat(MAXFLOAT)))
+        let currentHeight = 155 + (size?.height ?? 0)
+        
+        
+        headerView = RepositoryHeaderView(frame: CGRect(x: 0, y: noticeView.bottom, width: kScreen_width, height: currentHeight))
+        view.addSubview(headerView)
+        headerView.model = repo
+        tableView.tableHeaderView = headerView
+        
+        titles = ["Author", "Branch", "Created", "Updated", "License", "Issues", "Contributors"]
+        contents = [repo?.owner?.login ?? "", "master", "", "", repo?.license?.name ?? "", "\(repo?.openIssues ?? 0)", "\(repo?.contributorsCount ?? 0)"]
+        
+        tableView.reloadData()
     }
     
     @objc private func seeMoreInfo() {
         let web = WebViewController()
-        web.url = "https://github.com/ddbourgin/numpy-ml"
+        web.url = repo?.homepage
         navigationController?.pushViewController(web, animated: true)
     }
 
+}
+
+extension RepositoryDetailController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = LightTheme().background
+        return v
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = RepositoryInfoCell.cell(with: tableView)
+        cell.title.text = titles[indexPath.row]
+        cell.content.text = contents[indexPath.row]
+        return cell
+    }
+    
 }

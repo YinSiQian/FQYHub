@@ -48,6 +48,8 @@
 		8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80522CDF632006FB3AC /* ThemeManager.swift */; };
 		8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */; };
 		8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80922CE00FE006FB3AC /* BaseCell.swift */; };
+		8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */; };
+		8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		8BDEE80522CDF632006FB3AC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoriesCell.swift; sourceTree = "<group>"; };
 		8BDEE80922CE00FE006FB3AC /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryHeaderView.swift; sourceTree = "<group>"; };
+		8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInfoCell.swift; sourceTree = "<group>"; };
 		D4A2D619C084A2334CE2EDCB /* Pods-FQYHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FQYHub.debug.xcconfig"; path = "Target Support Files/Pods-FQYHub/Pods-FQYHub.debug.xcconfig"; sourceTree = "<group>"; };
 		D86DFFCB6D5AE58E07A3C085 /* Pods-FQYHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FQYHub.release.xcconfig"; path = "Target Support Files/Pods-FQYHub/Pods-FQYHub.release.xcconfig"; sourceTree = "<group>"; };
 		E243D855936C3EFCD501CA63 /* Pods_FQYHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FQYHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +266,8 @@
 			children = (
 				8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */,
 				8B3F9FC522CF43A000D8A4AF /* TrendingUserCell.swift */,
+				8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */,
+				8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */,
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
+				8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */,
 				8B077DDD22C4A351000EED2D /* GithubAPIs.swift in Sources */,
 				8B077DB922C45EAD000EED2D /* AppDelegate.swift in Sources */,
 				8B077DD722C46ACB000EED2D /* UIColor+Extension.swift in Sources */,
@@ -563,6 +570,7 @@
 				8B3F9FC422CF3E0800D8A4AF /* TrendingSection.swift in Sources */,
 				8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */,
 				8B077DD922C46E3A000EED2D /* Configs.swift in Sources */,
+				8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,

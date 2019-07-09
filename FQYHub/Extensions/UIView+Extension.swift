@@ -38,14 +38,17 @@ extension UIView {
     
     public func show(with message: String) {
         let hud = MBProgressHUD(view: self)
+        self.addSubview(hud)
         hud.removeFromSuperViewOnHide = true
         hud.mode = .indeterminate
         hud.label.text = message
         hud.show(animated: true)
+
     }
     
     public func showSuc(with message: String) {
         let hud = MBProgressHUD(view: self)
+        self.addSubview(hud)
         hud.removeFromSuperViewOnHide = true
         hud.mode = .customView
         hud.customView = UIImageView(image: UIImage(named: "Checkmark"))
@@ -56,10 +59,12 @@ extension UIView {
     
     public func showFail(with message: String) {
         let hud = MBProgressHUD(view: self)
+        self.addSubview(hud)
         hud.removeFromSuperViewOnHide = true
         hud.mode = .customView
         hud.customView = UIImageView(image: UIImage(named: "error"))
         hud.label.text = message
+        hud.label.numberOfLines = 3
         hud.show(animated: true)
         hud.hide(animated: true, afterDelay: 2.0)
     }

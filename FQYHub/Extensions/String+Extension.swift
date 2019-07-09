@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     
@@ -14,5 +15,9 @@ extension String {
         return URL(string: self)
     }
 
+    public func calculate(font: UIFont, size: CGSize) -> CGSize {
+        let size = (self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil).size
+        return size
+    }
     
 }

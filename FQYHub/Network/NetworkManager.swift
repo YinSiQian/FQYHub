@@ -36,6 +36,7 @@ class NetworkManager<Target> where Target: Moya.TargetType {
         let request = provider.rx.request(token)
         
         print("url --->\(token.baseURL)\(token.path)")
+        print("http method --->\(token.method.rawValue)")
         
         return online
             .ignore(value: false)  // Wait until we're online
