@@ -48,6 +48,10 @@ class WebViewController: BaseViewController {
             view.showFail(with: "url error!")
             return
         }
+        if _url.isEmpty {
+            view.showFail(with: "url error!")
+            return
+        }
         let request = URLRequest(url: _url.url!)
         webView.load(request)
         

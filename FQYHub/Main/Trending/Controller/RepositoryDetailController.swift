@@ -39,9 +39,9 @@ class RepositoryDetailController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.show(with: "loading...")
         setupSubviews()
         bindViewModel()
+        self.view.show(with: "loading...")
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -111,7 +111,7 @@ class RepositoryDetailController: BaseViewController {
     
     @objc private func seeMoreInfo() {
         let web = WebViewController()
-        web.url = repo?.homepage
+        web.url = repo?.htmlUrl
         navigationController?.pushViewController(web, animated: true)
     }
 
