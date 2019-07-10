@@ -14,7 +14,7 @@ class RepositoryHeaderView: UIView {
     
     var backImage: UIImageView!
     
-    var avatar: UIImageView!
+    var avatar: UIButton!
     
     var info: UILabel!
     
@@ -29,7 +29,7 @@ class RepositoryHeaderView: UIView {
     var model: Repository? {
         didSet {
             backImage.kf.setImage(with: model?.owner?.avatarUrl?.url, placeholder: Configs.DefaultSetting.placeholderImage)
-            avatar.kf.setImage(with: model?.owner?.avatarUrl?.url, placeholder: Configs.DefaultSetting.placeholderImage)
+            avatar.kf.setBackgroundImage(with: model?.owner?.avatarUrl?.url, for: .normal)
             info.text = model?.descriptionField
             watchers.text = "watchers \n \(model?.watchers ?? 0)"
             stars.text = "stars \n \(model?.stargazersCount ?? 0)"
@@ -58,7 +58,8 @@ class RepositoryHeaderView: UIView {
         effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         addSubview(effectView)
         
-        avatar = UIImageView()
+        avatar = UIButton()
+        avatar.setBackgroundImage(Configs.DefaultSetting.placeholderImage, for: .normal)
         avatar.layer.cornerRadius = 25
         avatar.layer.masksToBounds = true
         avatar.layer.borderColor = LightTheme().background.cgColor

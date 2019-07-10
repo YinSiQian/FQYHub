@@ -102,9 +102,17 @@ class RepositoryDetailController: BaseViewController {
         view.addSubview(headerView)
         headerView.model = repo
         tableView.tableHeaderView = headerView
+        headerView.avatar.rx.tap.subscribe(onNext: { [weak self] in
+            
+            let user = UserInfoViewController()
+            user.title = self?.repo?.owner?.login
+            user.username = self?.repo?.owner?.login ?? ""
+            self?.navigationController?.pushViewController(user, animated: true)
+            
+        }).disposed(by: disposeBag)
         
         titles = ["Author", "Branch", "Created", "Updated", "License", "Issues", "Contributors"]
-        contents = [repo?.owner?.login ?? "", "master", "", "", repo?.license?.name ?? "", "\(repo?.openIssues ?? 0)", "\(repo?.contributorsCount ?? 0)"]
+        contents = [repo?.owner?.login ?? "---", "master", "\(repo?.createdAt?.stringValue ?? "---")", "\(repo?.updatedAt?.stringValue ?? "---")", repo?.license?.name ?? "---", "\(repo?.openIssues ?? 0)", "\(repo?.contributorsCount ?? 0)"]
         
         tableView.reloadData()
     }

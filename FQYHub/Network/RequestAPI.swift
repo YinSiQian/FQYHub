@@ -44,6 +44,41 @@ extension RequestAPI {
 
 extension RequestAPI {
     
+    func createAccessToken(clientId: String, clientSecrect: String, code: String) -> Single<Token> {
+        return Single.create { single in
+            let params = ["client_id": clientId, "client_secret": clientSecrect, "code": code]
+            Alamofire.request("https://github.com/login/oauth/access_token",
+                              method: .post,
+                              parameters: params,
+                              encoding: URLEncoding.default,
+                              headers: ["Accept": "application/json"])
+                .responseJSON(completionHandler: { (response) in
+                    if let error = response.error {
+                        single(.error(error))
+                        return
+                    }
+                    if let json = response.result.value as? [String: Any] {
+                        print(json)
+                        if let token = Mapper<Token>().map(JSON: json) {
+                            single(.success(token))
+                            return
+                        }
+                    }
+                    single(.error(RxError.unknown))
+                })
+            return Disposables.create {}
+        }.observeOn(MainScheduler.instance)
+        
+    }
+    
+    func profile() -> Single<User> {
+        return requestObject(.profile, T: User.self)
+    }
+    
+}
+
+extension RequestAPI {
+    
     func repository(fullname: String) -> Single<Repository> {
         return requestObject(.repository(fullName: fullname), T: Repository.self)
     }

@@ -19,4 +19,8 @@ protocol API {
     func repository(fullname: String) -> Single<Repository>
     
     func user(owner: String) -> Single<User>
+    
+    func createAccessToken(clientId: String, clientSecrect: String, code: String) -> Single<Token>
+    
+    func profile() -> Single<User>
 }

@@ -12,6 +12,7 @@ import Moya
 enum GithubAPI {
     case repository(fullName: String)
     case user(owner: String)
+    case profile
 }
 
 extension GithubAPI: TargetType {
@@ -25,6 +26,8 @@ extension GithubAPI: TargetType {
             return "repos/\(name)"
         case .user(let name):
             return "users/\(name)"
+        case .profile:
+            return "user"
         }
     }
     
@@ -51,6 +54,9 @@ extension GithubAPI: TargetType {
     }
     
     var headers: [String : String]? {
+        if let _token = TokenManager.shared.token {
+            return ["Authorization": "token \(_token.access_token!)"]
+        }
         return nil
     }
     
