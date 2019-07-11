@@ -14,7 +14,7 @@ class TokenManager {
     var token: Token?
     
     var isAuth: Bool {
-        return token != nil
+        return token != nil && (token?.access_token != nil && token?.access_token != "")
     }
     
     private init() {
@@ -37,6 +37,10 @@ class TokenManager {
         }
         UserDefaults.standard.set(data, forKey: "token")
         
-        
+    }
+    
+    public func remove() {
+        UserDefaults.standard.removeObject(forKey: "token")
+        token = nil
     }
 }

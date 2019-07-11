@@ -22,8 +22,11 @@ public class TrendingRepositoryCellViewModel {
     
     let repository: TrendingRepository
     
+    let repo: Repository
+    
     init(with repository: TrendingRepository, since: TrendingSegments) {
         self.repository = repository
+        self.repo = Repository()
         name = Driver.just("\(repository.fullname ?? "")")
         avatarUlr = Driver.just(repository.avatarUrl?.url)
         content = Driver.just("\(repository.descriptionField ?? "")")
@@ -31,6 +34,18 @@ public class TrendingRepositoryCellViewModel {
         language = Driver.just("\(repository.language ?? "")")
         stars = Driver.just("\(repository.stars ?? 0)")
         periodStars = Driver.just("\(repository.currentPeriodStars ?? 0) \(since.currentTitle)")
+    }
+    
+    init(with repo: Repository) {
+        self.repository = TrendingRepository()
+        self.repo = repo
+        name = Driver.just("\(repo.fullname ?? "")")
+        avatarUlr = Driver.just(repo.owner?.avatarUrl?.url)
+        content = Driver.just("\(repo.descriptionField ?? "")")
+        languageColor = Driver.just(UIColor.clear)
+        language = Driver.just("\(repo.language ?? "")")
+        stars = Driver.just("\(repo.stargazersCount ?? 0)")
+        periodStars = Driver.just("")
     }
     
     

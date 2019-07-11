@@ -9,45 +9,52 @@
 import UIKit
 import SafariServices
 
-private let loginURL = URL(string: "http://github.com/login/oauth/authorize?client_id=\(Keys.github.appId)&scope=user+repo+notifications+read:org")!
-private let callbackURLScheme = "FQYHub"
-
 class MineViewController: BaseViewController {
-
-    private var _authSession: Any?
     
-    private var authSession: SFAuthenticationSession? {
-        get {
-            return _authSession as? SFAuthenticationSession
-        }
-        set {
-            _authSession = newValue
-        }
-    }
+    lazy private var loginBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Sign In With Github", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = LightTheme().primary
+        btn.layer.cornerRadius = 22;
+        btn.layer.masksToBounds = true
+        return btn
+    }()
     
-    private var loginBtn: UIButton!
+    lazy var tableView: UITableView = {
+        let tb = UITableView(frame: self.view.bounds, style: .plain)
+        tb.separatorStyle = .none
+        tb.delegate = self
+        tb.dataSource = self
+        tb.backgroundColor = LightTheme().background
+        return tb
+    }()
+    
+    private var user: User?
+    
+    private var titles = [String]()
+    
+    private var des = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        if TokenManager.shared.isAuth {
+            tableView.snp.makeConstraints { (make) in
+                make.edges.equalTo(self.view)
+            }
+        }
+       
+    }
+    
     private func setupSubviews() {
         
         if !TokenManager.shared.isAuth {
-            loginBtn = UIButton()
-            loginBtn.setTitle("Auth Login", for: .normal)
-            loginBtn.setTitleColor(.white, for: .normal)
-            loginBtn.backgroundColor = LightTheme().primary
-            loginBtn.layer.cornerRadius = 22;
-            loginBtn.layer.masksToBounds = true
             view.addSubview(loginBtn)
-            
-            loginBtn.rx.tap.subscribe(onNext: { [weak self] in
-                
-                self?.login()
-                
-            }).disposed(by: disposeBag)
             
             loginBtn.snp.makeConstraints { (make) in
                 make.center.equalTo(self.view)
@@ -55,37 +62,167 @@ class MineViewController: BaseViewController {
                 make.left.equalTo(self.view).offset(15)
                 make.right.equalTo(self.view).offset(-15)
             }
+            
+            bindViewModel()
+        } else {
+            view.addSubview(tableView)
+            autoLogin()
         }
-        
        
     }
-
-    private func login() {
+    
+    private func autoLogin() {
+        self.show(with: "")
+        singleProvider.profile().subscribe(onSuccess: { (user) in
+            self.hideHUD()
+            user.save()
+            self.updateUI()
+            self.setupData()
+        }) { (error) in
+            self.view.showFail(with: error.localizedDescription)
+            self.hideHUD()
+        }.disposed(by: disposeBag)
         
-        self.authSession = SFAuthenticationSession(url: loginURL, callbackURLScheme: callbackURLScheme, completionHandler: { (callbackUrl, error) in
-            print("callback url --->\(String(describing: callbackUrl?.absoluteString))")
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            if let codeValue = callbackUrl?.queryParameters?["code"] {
+    }
+    
+    private func bindViewModel() {
+        
+        let input = MineViewModel.Input(oAuthTrigger: loginBtn.rx.tap.asDriver())
+        
+        let viewModel = MineViewModel().transform(input: input)
+        
+        viewModel.actionCompection.drive(onNext: { (_) in
+            print("123456")
+            self.updateUI()
+            self.setupData()
+            
+        }, onCompleted: {
+            print("onCompleted 123456")
+
+        }).disposed(by: disposeBag)
+    }
+    
+    private func setupData() {
+        if let user = User.currentUser() {
+            self.user = user
+            
+            let size = user.descriptionField?.calculate(font: .systemFont(ofSize: 14), size: CGSize(width: kScreen_width - 30, height: CGFloat(MAXFLOAT)))
+            let currentHeight = 150 + (size?.height ?? 0)
+            
+            let headerView = MineHeaderView(frame: CGRect(x: 0, y: 0, width: kScreen_width, height: currentHeight))
+            headerView.avatar.rx.tap.subscribe(onNext: { () in
                 
-                singleProvider.createAccessToken(clientId: Keys.github.appId, clientSecrect: Keys.github.apiKey, code: codeValue).subscribe(onSuccess: { (token) in
-                    
-                    TokenManager.shared.token = token
-                    TokenManager.shared.save()
-                    
-                    singleProvider.profile().subscribe(onSuccess: { (user) in
-                        
-                        print(user)
-                        
-                    }).disposed(by: disposeBag)
-                    
-                }, onError: { (error) in
-                    self.view.showFail(with: error.localizedDescription)
-                }).disposed(by: disposeBag)
+                let web = WebViewController()
+                web.url = user.htmlUrl
+                self.navigationController?.pushViewController(web, animated: true)
+                
+            }).disposed(by: disposeBag)
+            headerView.updateInfo()
+            
+            tableView.tableHeaderView = headerView
+            
+            let following = "\(user.following ?? 0)"
+            let repos = "\(user.repositoriesCount ?? 0)"
+            let follows = "\(user.followers ?? 0)"
+            let blog = "\(user.bio ?? "---")"
+            
+            des = [follows, repos, following, blog]
+            titles = ["Followers", "Repos", "Following", "Blog"]
+            tableView.reloadData()
+            
+        }
+        
+    }
+    
+    private func updateUI() {
+        if TokenManager.shared.isAuth {
+            
+            view.addSubview(tableView)
+            loginBtn.removeFromSuperview()
+        } else {
+            tableView.removeFromSuperview()
+            view.addSubview(loginBtn)
+            loginBtn.snp.remakeConstraints { (make) in
+                make.center.equalTo(self.view)
+                make.height.equalTo(44)
+                make.left.equalTo(self.view).offset(15)
+                make.right.equalTo(self.view).offset(-15)
             }
-        })
-        self.authSession?.start()
+        }
     }
 
+
+}
+
+extension MineViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !TokenManager.shared.isAuth {
+            return 0
+        }
+        return section == 1 ? 1 : titles.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = LightTheme().background
+        return v
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = MineCell.cell(with: tableView)
+            cell.title.text = titles[indexPath.row]
+            cell.des.text = des[indexPath.row]
+            return cell
+        } else {
+            var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+            if cell == nil {
+                cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+                cell?.textLabel?.textAlignment = .center
+                cell?.textLabel?.text = "Log Out"
+                cell?.textLabel?.textColor = LightTheme().primary
+            }
+            return cell!
+        }
+       
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 3 {
+                let web = WebViewController()
+                web.url = user?.bio
+                self.navigationController?.pushViewController(web, animated: true)
+            }
+            if indexPath.row == 1 {
+                let repos = UserReposViewController()
+                repos.username = user?.login ?? ""
+                self.navigationController?.pushViewController(repos, animated: true)
+            }
+            
+        }
+        if indexPath.section == 1 {
+            //Clear
+            TokenManager.shared.remove()
+            User.clear()
+            updateUI()
+        }
+    }
+    
+    
+    
+    
 }

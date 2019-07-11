@@ -24,6 +24,7 @@ class RootViewController: UITabBarController {
         let searchNav = NavigationViewController(rootViewController: search)
         
         let mine = MineViewController()
+        mine.title = "Me"
         let mineNav = NavigationViewController(rootViewController: mine)
         
         viewControllers = [trendNav, searchNav, mineNav]

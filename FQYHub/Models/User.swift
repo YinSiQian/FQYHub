@@ -75,3 +75,32 @@ struct User: Mappable {
     
     
 }
+
+extension User {
+    
+    func save() {
+        
+        print("save user info")
+        
+        if let json = self.toJSONString() {
+            UserDefaults.standard.setValue(json, forKey: "user")
+        } else {
+            print("save user fail")
+        }
+    }
+    
+    static func currentUser() -> User? {
+        
+        if let json = UserDefaults.standard.object(forKey: "user") as? String {
+            return User(JSONString: json)
+        }
+        return nil
+    }
+    
+    static func clear() {
+        
+        UserDefaults.standard.removeObject(forKey: "user")
+        TokenManager.shared.remove()
+        
+    }
+}

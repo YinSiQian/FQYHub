@@ -50,16 +50,16 @@ class TrendingViewController: UIViewController {
             make.top.equalTo(self.view).offset(insets.top)
             make.height.equalTo(Configs.BaseDimensions.segmentHeight)
         }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchSegmentControl.snp.bottom)
+            make.left.right.bottom.equalTo(self.view)
+        }
     }
     
     private func setupSubviews() {
         view.addSubview(searchSegmentControl)
         view.addSubview(tableView)
-
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchSegmentControl.snp.bottom)
-            make.left.right.bottom.equalTo(self.view)
-        }
         
         navigationItem.titleView = segmentControl
        

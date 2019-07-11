@@ -13,6 +13,7 @@ enum GithubAPI {
     case repository(fullName: String)
     case user(owner: String)
     case profile
+    case userRepos(username: String, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -28,6 +29,8 @@ extension GithubAPI: TargetType {
             return "users/\(name)"
         case .profile:
             return "user"
+        case .userRepos(let name, page: _):
+            return "users/\(name)/repos"
         }
     }
     
@@ -44,11 +47,24 @@ extension GithubAPI: TargetType {
         return Data()
     }
     
+    var parameters: [String: Any]? {
+        var params: [String: Any] = [:]
+        switch self {
+        case .userRepos(_, let page):
+            params["page"] = page
+        default: break
+        }
+        return params
+    }
+    
     var task: Task {
         switch self {
         case .repository(fullName: _):
             return .requestPlain
         default:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            }
             return .requestPlain
         }
     }

@@ -87,6 +87,10 @@ extension RequestAPI {
         return requestObject(.user(owner: owner), T: User.self)
     }
     
+    func userRepos(username: String, page: Int) -> Single<[Repository]> {
+        return requestArray(.userRepos(username: username, page: page), T: Repository.self)
+    }
+    
 }
 
 extension RequestAPI {
@@ -96,6 +100,17 @@ extension RequestAPI {
             print("error handle ----> \(error.localizedDescription)")
             return Observable.of()
         }).asSingle()
+    }
+    
+    private func requestArray<T: BaseMappable>(_ target: GithubAPI, T: T.Type) -> Single<[T]> {
+        return githubProvider.request(target)
+            .share(replay: 1)
+            .asObservable()
+            .mapArray(T.self)
+            .catchError({ (error) -> Observable<[T]> in
+                print("error handle----> \(error.localizedDescription)")
+                return Observable.just([])
+            }).asSingle()
     }
 }
 

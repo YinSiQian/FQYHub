@@ -78,6 +78,7 @@ class WebViewController: BaseViewController {
     }
 
     deinit {
+        self.progress.removeFromSuperview()
         self.webView.removeObserver(self, forKeyPath: "title")
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }

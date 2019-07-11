@@ -45,6 +45,13 @@
 		8B5BD5E122CF9BEB007EC605 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E022CF9BEB007EC605 /* Repository.swift */; };
 		8B5BD5E322CF9D9E007EC605 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E222CF9D9E007EC605 /* GithubAPI.swift */; };
 		8B5BD5E522CFA259007EC605 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E422CFA259007EC605 /* RepositoryDetailViewModel.swift */; };
+		8BDC664922D6D5DB00AF70E4 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */; };
+		8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664A22D6E9E500AF70E4 /* MineCell.swift */; };
+		8BDC664D22D71FDD00AF70E4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */; };
+		8BDC664F22D72D3900AF70E4 /* UserReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664E22D72D3900AF70E4 /* UserReposViewController.swift */; };
+		8BDC665122D72F0300AF70E4 /* UserReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC665022D72F0300AF70E4 /* UserReposViewModel.swift */; };
+		8BDC665322D72F6000AF70E4 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC665222D72F6000AF70E4 /* RefreshView.swift */; };
+		8BDC665522D7324B00AF70E4 /* MJRefresh+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC665422D7324B00AF70E4 /* MJRefresh+Extension.swift */; };
 		8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */; };
 		8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */; };
 		8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80322CDEE52006FB3AC /* MineViewController.swift */; };
@@ -98,6 +105,13 @@
 		8B5BD5E022CF9BEB007EC605 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		8B5BD5E222CF9D9E007EC605 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		8B5BD5E422CFA259007EC605 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
+		8BDC664A22D6E9E500AF70E4 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
+		8BDC664E22D72D3900AF70E4 /* UserReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReposViewController.swift; sourceTree = "<group>"; };
+		8BDC665022D72F0300AF70E4 /* UserReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReposViewModel.swift; sourceTree = "<group>"; };
+		8BDC665222D72F6000AF70E4 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		8BDC665422D7324B00AF70E4 /* MJRefresh+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MJRefresh+Extension.swift"; sourceTree = "<group>"; };
 		8BDEE7F922CDEC9F006FB3AC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8BDEE7FC22CDECE3006FB3AC /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		8BDEE80322CDEE52006FB3AC /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +213,7 @@
 				8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */,
 				8B49E4EC22D3766E009D5E07 /* BaseViewController.swift */,
 				8B49E4EE22D393E3009D5E07 /* WebViewController.swift */,
+				8BDC665222D72F6000AF70E4 /* RefreshView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -221,6 +236,7 @@
 				8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */,
 				8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */,
 				8BFE828922D5C3F3003EA515 /* Date+Extension.swift */,
+				8BDC665422D7324B00AF70E4 /* MJRefresh+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +391,8 @@
 		8BDEE7FF22CDEE29006FB3AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8BDC664A22D6E9E500AF70E4 /* MineCell.swift */,
+				8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,6 +407,8 @@
 		8BDEE80122CDEE32006FB3AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */,
+				8BDC665022D72F0300AF70E4 /* UserReposViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -397,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDEE80322CDEE52006FB3AC /* MineViewController.swift */,
+				8BDC664E22D72D3900AF70E4 /* UserReposViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -573,6 +594,7 @@
 				8B5BD5E122CF9BEB007EC605 /* Repository.swift in Sources */,
 				8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */,
 				8B3F9FC622CF43A000D8A4AF /* TrendingUserCell.swift in Sources */,
+				8BDC664D22D71FDD00AF70E4 /* MineHeaderView.swift in Sources */,
 				8B077DEE22C4B6F0000EED2D /* TrendingViewModel.swift in Sources */,
 				8B5BD5E522CFA259007EC605 /* RepositoryDetailViewModel.swift in Sources */,
 				8B3F9FCB22CF4AF300D8A4AF /* SearchViewController.swift in Sources */,
@@ -581,18 +603,23 @@
 				8B077DE922C4AC5C000EED2D /* ReachabilityManager.swift in Sources */,
 				8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */,
 				8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */,
+				8BDC664F22D72D3900AF70E4 /* UserReposViewController.swift in Sources */,
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
 				8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */,
 				8B077DDD22C4A351000EED2D /* GithubAPIs.swift in Sources */,
+				8BDC665522D7324B00AF70E4 /* MJRefresh+Extension.swift in Sources */,
 				8B077DB922C45EAD000EED2D /* AppDelegate.swift in Sources */,
+				8BDC665122D72F0300AF70E4 /* UserReposViewModel.swift in Sources */,
 				8B077DD722C46ACB000EED2D /* UIColor+Extension.swift in Sources */,
 				8B077DE522C4A88C000EED2D /* TrendingViewController.swift in Sources */,
 				8B3F9FC422CF3E0800D8A4AF /* TrendingSection.swift in Sources */,
 				8BFE828A22D5C3F3003EA515 /* Date+Extension.swift in Sources */,
 				8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */,
 				8B077DD922C46E3A000EED2D /* Configs.swift in Sources */,
+				8BDC664922D6D5DB00AF70E4 /* MineViewModel.swift in Sources */,
 				8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */,
+				8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
@@ -604,6 +631,7 @@
 				8B3F9FC222CF339F00D8A4AF /* TrendingUserCellViewModel.swift in Sources */,
 				8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */,
 				8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */,
+				8BDC665322D72F6000AF70E4 /* RefreshView.swift in Sources */,
 				8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */,
 				8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */,
 			);

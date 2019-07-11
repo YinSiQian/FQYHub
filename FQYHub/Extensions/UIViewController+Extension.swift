@@ -17,6 +17,7 @@ extension UIViewController {
         hud.removeFromSuperViewOnHide = true
         hud.mode = .indeterminate
         hud.label.text = message
+        self.view.addSubview(hud)
         hud.show(animated: true)
     }
     
@@ -26,12 +27,14 @@ extension UIViewController {
         hud.mode = .customView
         hud.customView = UIImageView(image: UIImage(named: "Checkmark"))
         hud.label.text = message
+        self.view.addSubview(hud)
         hud.show(animated: true)
         hud.hide(animated: true, afterDelay: 2.0)
     }
     
     public func showFail(with message: String) {
         let hud = MBProgressHUD(view: self.view)
+        self.view.addSubview(hud)
         hud.removeFromSuperViewOnHide = true
         hud.mode = .customView
         hud.customView = UIImageView(image: UIImage(named: "error"))

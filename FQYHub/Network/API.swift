@@ -23,4 +23,6 @@ protocol API {
     func createAccessToken(clientId: String, clientSecrect: String, code: String) -> Single<Token>
     
     func profile() -> Single<User>
+    
+    func userRepos(username: String, page: Int) -> Single<[Repository]>
 }
