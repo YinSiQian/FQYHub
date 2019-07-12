@@ -25,4 +25,8 @@ protocol API {
     func profile() -> Single<User>
     
     func userRepos(username: String, page: Int) -> Single<[Repository]>
+    
+    func userFollowers(username: String, page: Int) -> Single<[User]>
+    
+    func userFollowing(username: String, page: Int) -> Single<[User]>
 }

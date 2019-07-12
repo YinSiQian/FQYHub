@@ -32,6 +32,10 @@
 		8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */; };
 		8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */; };
 		8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */; };
+		8B38C1CE22D82F920069D4F6 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */; };
+		8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */; };
+		8B38C1D222D833B30069D4F6 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */; };
+		8B38C1D422D833C40069D4F6 /* FollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1D322D833C40069D4F6 /* FollowingViewModel.swift */; };
 		8B3F9FBC22CEF30F00D8A4AF /* BaseCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */; };
 		8B3F9FBE22CF016800D8A4AF /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */; };
 		8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */; };
@@ -92,6 +96,10 @@
 		8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
 		8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
+		8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListViewController.swift; sourceTree = "<group>"; };
+		8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
+		8B38C1D322D833C40069D4F6 /* FollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewModel.swift; sourceTree = "<group>"; };
 		8B3F9FBB22CEF30F00D8A4AF /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
 		8B3F9FBD22CF016800D8A4AF /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		8B3F9FBF22CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryCellViewModel.swift; sourceTree = "<group>"; };
@@ -409,6 +417,8 @@
 			children = (
 				8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */,
 				8BDC665022D72F0300AF70E4 /* UserReposViewModel.swift */,
+				8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */,
+				8B38C1D322D833C40069D4F6 /* FollowingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -418,6 +428,8 @@
 			children = (
 				8BDEE80322CDEE52006FB3AC /* MineViewController.swift */,
 				8BDC664E22D72D3900AF70E4 /* UserReposViewController.swift */,
+				8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */,
+				8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -584,12 +596,14 @@
 			files = (
 				8B49E4EF22D393E3009D5E07 /* WebViewController.swift in Sources */,
 				8B077DD522C469D1000EED2D /* UIViewController+Extension.swift in Sources */,
+				8B38C1CE22D82F920069D4F6 /* FollowerListViewController.swift in Sources */,
 				8B077DDF22C4A440000EED2D /* String+Extension.swift in Sources */,
 				8BDEE7FA22CDEC9F006FB3AC /* RootViewController.swift in Sources */,
 				8B077DD322C4672E000EED2D /* UIView+Extension.swift in Sources */,
 				8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */,
 				8B3F9FCD22CF500700D8A4AF /* RepositoryDetailController.swift in Sources */,
 				8BFE828C22D5DAF5003EA515 /* Token.swift in Sources */,
+				8B38C1D222D833B30069D4F6 /* FollowersViewModel.swift in Sources */,
 				8B49E4ED22D3766E009D5E07 /* BaseViewController.swift in Sources */,
 				8B5BD5E122CF9BEB007EC605 /* Repository.swift in Sources */,
 				8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */,
@@ -619,6 +633,8 @@
 				8B077DD922C46E3A000EED2D /* Configs.swift in Sources */,
 				8BDC664922D6D5DB00AF70E4 /* MineViewModel.swift in Sources */,
 				8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */,
+				8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */,
+				8B38C1D422D833C40069D4F6 /* FollowingViewModel.swift in Sources */,
 				8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,

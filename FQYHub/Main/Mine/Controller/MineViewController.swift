@@ -212,6 +212,11 @@ extension MineViewController: UITableViewDelegate, UITableViewDataSource {
                 repos.username = user?.login ?? ""
                 self.navigationController?.pushViewController(repos, animated: true)
             }
+            if indexPath.row == 0 {
+                let followers = FollowerListViewController()
+                followers.username = user?.login ?? ""
+                self.navigationController?.pushViewController(followers, animated: true)
+            }
             
         }
         if indexPath.section == 1 {

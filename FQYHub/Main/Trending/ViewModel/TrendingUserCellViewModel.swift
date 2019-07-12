@@ -12,7 +12,7 @@ import RxSwift
 
 public class TrendingUserCellViewModel {
     
-    let user: TrendingUser
+    let trendingUser: TrendingUser
     
     let name: Driver<String>
     let content: Driver<String>
@@ -21,14 +21,28 @@ public class TrendingUserCellViewModel {
     let language: Driver<String?>
     let username: Driver<String>
     
-    init(with user: TrendingUser) {
+    let user: User
+    
+    init(with trendingUser: TrendingUser) {
+        self.user = User()
+        self.trendingUser = trendingUser
+        name = Driver.just("\(trendingUser.name ?? "") (\(trendingUser.username ?? "")) ")
+        content = Driver.just("\(trendingUser.repo?.fullname ?? "")")
+        avatarUlr = Driver.just(trendingUser.avatar?.url)
+        languageColor = Driver.just(UIColor.color(withHexString: trendingUser.repo?.languageColor))
+        language = Driver.just(trendingUser.repo?.language)
+        username = Driver.just("\(trendingUser.username ?? "")")
+    }
+    
+    init(with user: User) {
+        self.trendingUser = TrendingUser()
         self.user = user
-        name = Driver.just("\(user.name ?? "") (\(user.username ?? "")) ")
-        content = Driver.just("\(user.repo?.fullname ?? "")")
-        avatarUlr = Driver.just(user.avatar?.url)
-        languageColor = Driver.just(UIColor.color(withHexString: user.repo?.languageColor))
-        language = Driver.just(user.repo?.language)
-        username = Driver.just("\(user.username ?? "")")
+        name = Driver.just("\(user.login ?? "")")
+        content = Driver.just("\("")")
+        avatarUlr = Driver.just(user.avatarUrl?.url)
+        languageColor = Driver.just(UIColor.clear)
+        language = Driver.just("")
+        username = Driver.just("")
     }
     
 }

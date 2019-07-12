@@ -91,6 +91,14 @@ extension RequestAPI {
         return requestArray(.userRepos(username: username, page: page), T: Repository.self)
     }
     
+    func userFollowers(username: String, page: Int) -> Single<[User]> {
+        return requestArray(.userFollower(username: username, page: page), T: User.self)
+    }
+    
+    func userFollowing(username: String, page: Int) -> Single<[User]> {
+        return requestArray(.userFollower(username: username, page: page), T: User.self)
+    }
+    
 }
 
 extension RequestAPI {

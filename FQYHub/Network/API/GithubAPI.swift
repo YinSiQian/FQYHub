@@ -14,6 +14,9 @@ enum GithubAPI {
     case user(owner: String)
     case profile
     case userRepos(username: String, page: Int)
+    case userFollower(username: String, page: Int)
+    case userFollowing(username: String, page: Int)
+
 }
 
 extension GithubAPI: TargetType {
@@ -31,6 +34,10 @@ extension GithubAPI: TargetType {
             return "user"
         case .userRepos(let name, page: _):
             return "users/\(name)/repos"
+        case .userFollower(let name, page: _):
+            return "users/\(name)/followers"
+        case .userFollowing(let name, page: _):
+            return "users/\(name)/following"
         }
     }
     
