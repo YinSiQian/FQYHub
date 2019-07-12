@@ -130,7 +130,6 @@ class TrendingRepositoriesCell: UITableViewCell, BaseCellCommonFunc {
         }
         
         
-        
         total_star.snp.makeConstraints { (make) in
             make.top.equalTo(self.content.snp.bottom).offset(space)
             make.left.equalTo(self.avatar.snp.right).offset(space)
@@ -178,6 +177,19 @@ class TrendingRepositoriesCell: UITableViewCell, BaseCellCommonFunc {
             self?.avatar.kf.setImage(with: url, placeholder: Configs.DefaultSetting.placeholderImage)
 
         }).disposed(by: disposeBag)
+        
+        ViewModel.isTrending.drive(onNext: { [weak self] (isTrending) in
+            
+            if !isTrending {
+                self?.period_star.image = nil
+                self?.language.textColor = LightTheme().primary
+            } else {
+                self?.period_star.image = UIImage(named: "icon_trend_p_star")
+                self?.language.textColor = LightTheme().text
+            }
+            
+        }).disposed(by: disposeBag)
+        
         
     }
 

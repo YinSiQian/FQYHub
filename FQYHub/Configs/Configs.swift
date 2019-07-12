@@ -50,6 +50,10 @@ struct Configs {
         static let trendingBaseURL = "https://github-trending-api.now.sh/"
     }
     
+    struct PageHelper {
+        static let rows = 30
+    }
+    
     struct Develope {
         
         static let devStatus = true

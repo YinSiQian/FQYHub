@@ -42,7 +42,7 @@ class UserReposViewController: BaseViewController {
     
     private func bindViewModel() {
         
-        let viewModel = UserReposViewModel(input: UserReposViewModel.Input(username: username, footerRefresh: self.tableView.mj_footer.rx.refreshing.asObservable()))
+        let viewModel = UserReposViewModel(input: UserReposViewModel.Input(username: username, footerRefresh: self.tableView.mj_footer.rx.refreshing.asObservable(), selection: self.tableView.rx.modelSelected(TrendingRepositoryCellViewModel.self).asDriver()))
         
         
         viewModel.repos.bind(to: self.tableView.rx.items) {
@@ -53,6 +53,16 @@ class UserReposViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         viewModel.footerEndRefresh.bind(to: self.tableView.mj_footer.rx.endRefreshing).disposed(by: disposeBag)
+        
+        viewModel.noMoreData.bind(to: self.tableView.mj_footer.rx.endRefreshingWithNoMoreData).disposed(by: disposeBag)
+        
+        viewModel.selection.drive(onNext: { (url) in
+            
+            let web = WebViewController()
+            web.url = url
+            self.navigationController?.pushViewController(web, animated: true)
+
+        }).disposed(by: disposeBag)
         
     }
 

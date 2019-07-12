@@ -36,3 +36,15 @@ extension Reactive where Base: MJRefreshComponent {
     }
     
 }
+
+extension Reactive where Base: MJRefreshFooter {
+    
+    var endRefreshingWithNoMoreData: Binder<Bool> {
+        return Binder(base) { refresh, noData in
+            if noData {
+                refresh.endRefreshingWithNoMoreData()
+            }
+        }
+    }
+    
+}
