@@ -124,7 +124,7 @@ class MineViewController: BaseViewController {
             let following = "\(user.following ?? 0)"
             let repos = "\(user.repositoriesCount ?? 0)"
             let follows = "\(user.followers ?? 0)"
-            let blog = "\(user.bio ?? "---")"
+            let blog = "\(user.blog ?? "---")"
             
             des = [follows, repos, following, blog]
             titles = ["Followers", "Repos", "Following", "Blog"]
@@ -202,20 +202,29 @@ extension MineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            if indexPath.row == 3 {
-                let web = WebViewController()
-                web.url = user?.bio
-                self.navigationController?.pushViewController(web, animated: true)
+        
+            if indexPath.row == 0 {
+                let followers = FollowerListViewController()
+                followers.username = user?.login ?? ""
+                self.navigationController?.pushViewController(followers, animated: true)
             }
+            
             if indexPath.row == 1 {
                 let repos = UserReposViewController()
                 repos.username = user?.login ?? ""
                 self.navigationController?.pushViewController(repos, animated: true)
             }
-            if indexPath.row == 0 {
-                let followers = FollowerListViewController()
+           
+            if indexPath.row == 2 {
+                let followers = FollowingListViewController()
                 followers.username = user?.login ?? ""
                 self.navigationController?.pushViewController(followers, animated: true)
+            }
+            
+            if indexPath.row == 3 {
+                let web = WebViewController()
+                web.url = user?.blog
+                self.navigationController?.pushViewController(web, animated: true)
             }
             
         }
