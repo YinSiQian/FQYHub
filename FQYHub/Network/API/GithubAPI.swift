@@ -16,6 +16,9 @@ enum GithubAPI {
     case userRepos(username: String, page: Int)
     case userFollower(username: String, page: Int)
     case userFollowing(username: String, page: Int)
+    case searchRepos(query: String, page: Int)
+    case searchUsers(query: String, page: Int)
+
 
 }
 
@@ -38,6 +41,10 @@ extension GithubAPI: TargetType {
             return "users/\(name)/followers"
         case .userFollowing(let name, page: _):
             return "users/\(name)/following"
+        case .searchRepos(_, _):
+            return "search/repositories"
+        case .searchUsers(query: _, page: _):
+            return "search/users"
         }
     }
     
@@ -58,6 +65,16 @@ extension GithubAPI: TargetType {
         var params: [String: Any] = [:]
         switch self {
         case .userRepos(_, let page):
+            params["page"] = page
+        case .searchRepos(let query, let page):
+            params["q"] = query
+            params["sort"] = ""
+            params["order"] = ""
+            params["page"] = page
+        case .searchUsers(let query,let page):
+            params["q"] = query
+            params["sort"] = ""
+            params["order"] = ""
             params["page"] = page
         default: break
         }

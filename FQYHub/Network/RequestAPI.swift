@@ -103,6 +103,19 @@ extension RequestAPI {
 
 extension RequestAPI {
     
+    func searchUsers(query: String, page: Int) -> Single<UserSearchModel> {
+        return requestObject(.searchUsers(query: query, page: page), T: UserSearchModel.self)
+    }
+    
+    func searchRepositories(query: String, page: Int) -> Single<RepositorySearchModel> {
+        return requestObject(.searchRepos(query: query, page: page), T: RepositorySearchModel.self)
+
+    }
+    
+}
+
+extension RequestAPI {
+    
     private func requestObject<T: BaseMappable>(_ target: GithubAPI, T: T.Type) -> Single<T> {
         return githubProvider.request(target).asObservable().mapObject(T.self).catchError({ (error) -> Observable<T> in
             print("error handle ----> \(error.localizedDescription)")

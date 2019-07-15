@@ -28,6 +28,9 @@
 		8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DEF22C4C537000EED2D /* RequestAPI.swift */; };
 		8B077DF222C4C56B000EED2D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF122C4C56B000EED2D /* API.swift */; };
 		8B077DF522C4C848000EED2D /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B077DF422C4C848000EED2D /* TrendingAPI.swift */; };
+		8B09D65122DC7FC500E5FFB9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09D65022DC7FC500E5FFB9 /* SearchViewModel.swift */; };
+		8B09D65322DC7FE400E5FFB9 /* UserSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09D65222DC7FE400E5FFB9 /* UserSearchModel.swift */; };
+		8B09D65522DC7FF400E5FFB9 /* RepositorySearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09D65422DC7FF400E5FFB9 /* RepositorySearchModel.swift */; };
 		8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */; };
 		8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */; };
 		8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */; };
@@ -92,6 +95,9 @@
 		8B077DEF22C4C537000EED2D /* RequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		8B077DF122C4C56B000EED2D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8B077DF422C4C848000EED2D /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
+		8B09D65022DC7FC500E5FFB9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8B09D65222DC7FE400E5FFB9 /* UserSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchModel.swift; sourceTree = "<group>"; };
+		8B09D65422DC7FF400E5FFB9 /* RepositorySearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchModel.swift; sourceTree = "<group>"; };
 		8B0BB7D422C5A19100DC551D /* Observable+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Operators.swift"; sourceTree = "<group>"; };
 		8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
@@ -353,9 +359,36 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		8B09D64C22DC7F2700E5FFB9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B09D65022DC7FC500E5FFB9 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8B09D64D22DC7F4000E5FFB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B09D65222DC7FE400E5FFB9 /* UserSearchModel.swift */,
+				8B09D65422DC7FF400E5FFB9 /* RepositorySearchModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B09D64E22DC7F8100E5FFB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8B3F9FC722CF4ACE00D8A4AF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				8B09D64E22DC7F8100E5FFB9 /* View */,
+				8B09D64D22DC7F4000E5FFB9 /* Model */,
+				8B09D64C22DC7F2700E5FFB9 /* ViewModel */,
 				8B3F9FC822CF4AD500D8A4AF /* Controller */,
 			);
 			path = Search;
@@ -615,6 +648,7 @@
 				8B077DEC22C4B648000EED2D /* TrendingModel.swift in Sources */,
 				8B077DBB22C45EAD000EED2D /* ViewController.swift in Sources */,
 				8B077DE922C4AC5C000EED2D /* ReachabilityManager.swift in Sources */,
+				8B09D65522DC7FF400E5FFB9 /* RepositorySearchModel.swift in Sources */,
 				8BDEE7FD22CDECE3006FB3AC /* NavigationViewController.swift in Sources */,
 				8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */,
 				8BDC664F22D72D3900AF70E4 /* UserReposViewController.swift in Sources */,
@@ -636,9 +670,11 @@
 				8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */,
 				8B38C1D422D833C40069D4F6 /* FollowingViewModel.swift in Sources */,
 				8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */,
+				8B09D65122DC7FC500E5FFB9 /* SearchViewModel.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
+				8B09D65322DC7FE400E5FFB9 /* UserSearchModel.swift in Sources */,
 				8B077DDB22C475CE000EED2D /* User.swift in Sources */,
 				8B5BD5E322CF9D9E007EC605 /* GithubAPI.swift in Sources */,
 				8BFE828E22D5E2E8003EA515 /* TokenManager.swift in Sources */,

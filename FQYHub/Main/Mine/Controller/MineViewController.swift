@@ -203,9 +203,17 @@ extension MineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 3 {
-                let web = WebViewController()
-                web.url = user?.bio
-                self.navigationController?.pushViewController(web, animated: true)
+                guard let url = user?.blog else {
+                    return
+                }
+                if url.hasPrefix("http") || url.hasPrefix("https") {
+                    let web = WebViewController()
+                    web.url = url
+                    self.navigationController?.pushViewController(web, animated: true)
+                } else {
+                    show(message: "Blog url error")
+                }
+                
             }
             if indexPath.row == 1 {
                 let repos = UserReposViewController()

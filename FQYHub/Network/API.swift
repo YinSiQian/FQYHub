@@ -29,4 +29,8 @@ protocol API {
     func userFollowers(username: String, page: Int) -> Single<[User]>
     
     func userFollowing(username: String, page: Int) -> Single<[User]>
+    
+    func searchUsers(query: String, page: Int) -> Single<UserSearchModel>
+    
+    func searchRepositories(query: String, page: Int) -> Single<RepositorySearchModel>
 }
