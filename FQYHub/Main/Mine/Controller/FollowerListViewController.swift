@@ -24,6 +24,7 @@ class FollowerListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Followers"
         setupSubviews()
         bindViewModel()
         self.tableView.mj_footer.beginRefreshing()

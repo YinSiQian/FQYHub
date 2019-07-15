@@ -96,7 +96,7 @@ extension RequestAPI {
     }
     
     func userFollowing(username: String, page: Int) -> Single<[User]> {
-        return requestArray(.userFollower(username: username, page: page), T: User.self)
+        return requestArray(.userFollowing(username: username, page: page), T: User.self)
     }
     
 }
