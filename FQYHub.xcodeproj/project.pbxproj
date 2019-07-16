@@ -123,6 +123,8 @@
 		8B5BD5E422CFA259007EC605 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		8B819F8C22DCC12500ADC2EC /* UserSearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCellViewModel.swift; sourceTree = "<group>"; };
 		8B819F8E22DCD16800ADC2EC /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUserCell.swift; path = FQYHub/Main/Search/ViewModel/SearchUserCell.swift; sourceTree = SOURCE_ROOT; };
+		8BBDF1C522DDEE2800657634 /* FQYHub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FQYHub-Bridging-Header.h"; sourceTree = "<group>"; };
+		8BBDF1C922DDEFAF00657634 /* FQYHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FQYHub.entitlements; sourceTree = "<group>"; };
 		8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		8BDC664A22D6E9E500AF70E4 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		8B077DB722C45EAD000EED2D /* FQYHub */ = {
 			isa = PBXGroup;
 			children = (
+				8BBDF1C922DDEFAF00657634 /* FQYHub.entitlements */,
 				8BDEE7FB22CDECA4006FB3AC /* NavigationController */,
 				8BDEE7F822CDEC89006FB3AC /* Root */,
 				8B077DD122C466F9000EED2D /* Network */,
@@ -212,6 +215,7 @@
 				8B077DBF22C45EB0000EED2D /* Assets.xcassets */,
 				8B077DC122C45EB0000EED2D /* LaunchScreen.storyboard */,
 				8B077DC422C45EB0000EED2D /* Info.plist */,
+				8BBDF1C522DDEE2800657634 /* FQYHub-Bridging-Header.h */,
 			);
 			path = FQYHub;
 			sourceTree = "<group>";
@@ -507,6 +511,12 @@
 				TargetAttributes = {
 					8B077DB422C45EAD000EED2D = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -840,6 +850,8 @@
 			baseConfigurationReference = D4A2D619C084A2334CE2EDCB /* Pods-FQYHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FQYHub/FQYHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
@@ -850,6 +862,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ysq.hub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FQYHub/FQYHub-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -860,6 +874,8 @@
 			baseConfigurationReference = D86DFFCB6D5AE58E07A3C085 /* Pods-FQYHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FQYHub/FQYHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QTXH4HQ34Z;
 				INFOPLIST_FILE = FQYHub/Info.plist;
@@ -870,6 +886,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ysq.hub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FQYHub/FQYHub-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

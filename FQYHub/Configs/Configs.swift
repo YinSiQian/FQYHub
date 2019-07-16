@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 enum Keys {
-    case github
+    case github, jpush
     
     var apiKey: String {
         switch self {
         case .github:
             return "4a0d00e3996c4184885386a9436a7ec5449ee29f"
+        case .jpush:
+            return "5e950c61a5c6535540015feb"
     
         }
     }
@@ -24,6 +26,8 @@ enum Keys {
         switch self {
         case .github:
             return "29d8a2b588b27508858b"
+        case .jpush:
+            return "6b719ed00832455d47c0f7d5"
         }
     }
 }

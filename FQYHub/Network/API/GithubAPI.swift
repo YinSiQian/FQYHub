@@ -94,8 +94,8 @@ extension GithubAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        if let _token = TokenManager.shared.token {
-            return ["Authorization": "token \(_token.access_token!)"]
+        if let _token = TokenManager.shared.token, let access = _token.access_token {
+            return ["Authorization": "token \(access)"]
         }
         return nil
     }
