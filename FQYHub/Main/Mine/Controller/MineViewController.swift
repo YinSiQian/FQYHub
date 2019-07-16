@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import RxSwift
 
 class MineViewController: BaseViewController {
     
@@ -89,17 +90,28 @@ class MineViewController: BaseViewController {
         
         let input = MineViewModel.Input(oAuthTrigger: loginBtn.rx.tap.asDriver())
         
-        let viewModel = MineViewModel().transform(input: input)
+        let output = MineViewModel().transform(input: input)
         
-        viewModel.actionCompection.drive(onNext: { (_) in
+        output.actionCompection.drive(onNext: { (_) in
             print("123456")
+            self.hideHUD()
             self.updateUI()
             self.setupData()
             
         }, onCompleted: {
+            self.hideHUD()
             print("onCompleted 123456")
 
         }).disposed(by: disposeBag)
+        
+        output.authComplection.drive(onNext: { (_) in
+            self.show(with: "loading...")
+            
+        }, onCompleted: {
+            self.hideHUD()
+            
+        }).disposed(by: disposeBag)
+       
     }
     
     private func setupData() {
@@ -138,8 +150,12 @@ class MineViewController: BaseViewController {
         if TokenManager.shared.isAuth {
             
             view.addSubview(tableView)
+            tableView.snp.remakeConstraints { (make) in
+                make.edges.equalTo(self.view)
+            }
             loginBtn.removeFromSuperview()
         } else {
+            bindViewModel()
             tableView.removeFromSuperview()
             view.addSubview(loginBtn)
             loginBtn.snp.remakeConstraints { (make) in

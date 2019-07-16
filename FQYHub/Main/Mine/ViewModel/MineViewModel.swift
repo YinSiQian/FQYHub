@@ -33,6 +33,7 @@ class MineViewModel: NSObject {
     
     struct Output {
         let actionCompection: Driver<Void>
+        let authComplection: Driver<Void>
     }
     
     let code = PublishSubject<String>()
@@ -45,6 +46,8 @@ class MineViewModel: NSObject {
         
         let complection = PublishSubject<Void>()
         
+        let auth = PublishSubject<Void>()
+        
         oAuthTrigger.drive(onNext: { () in
             self.authSession = SFAuthenticationSession(url: loginURL, callbackURLScheme: callbackURLScheme, completionHandler: { (callbackUrl, error) in
                 if let error = error {
@@ -52,6 +55,7 @@ class MineViewModel: NSObject {
                 }
                 if let codeValue = callbackUrl?.queryParameters?["code"] {
                     self.code.onNext(codeValue)
+                    auth.onNext(())
                 }
             })
             self.authSession?.start()
@@ -88,7 +92,8 @@ class MineViewModel: NSObject {
             }
         }).disposed(by: disposeBag)
         
-        return Output(actionCompection: complection.asDriverOnErrorJustComplete())
+        return Output(actionCompection: complection.asDriverOnErrorJustComplete(),
+                      authComplection: auth.asDriverOnErrorJustComplete())
         
     }
     

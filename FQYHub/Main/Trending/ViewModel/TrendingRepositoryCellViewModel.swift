@@ -45,7 +45,7 @@ public class TrendingRepositoryCellViewModel {
         name = Driver.just("\(repo.fullname ?? "")")
         avatarUlr = Driver.just(repo.owner?.avatarUrl?.url)
         content = Driver.just("\(repo.descriptionField ?? "")")
-        languageColor = Driver.just(UIColor.clear)
+        languageColor = Driver.just(UIColor.color(withHexString: repo.languageColor))
         language = Driver.just("\(repo.language ?? "")")
         stars = Driver.just("\(repo.stargazersCount ?? 0)")
         periodStars = Driver.just("")

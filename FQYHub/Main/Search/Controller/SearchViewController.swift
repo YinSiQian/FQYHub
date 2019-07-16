@@ -27,12 +27,21 @@ class SearchViewController: UIViewController {
         tb.separatorStyle = .none
         tb.backgroundColor = LightTheme().background
         tb.keyboardDismissMode = .onDrag
+        tb.contentInsetAdjustmentBehavior = .automatic
+        tb.estimatedSectionFooterHeight = 0
+        tb.estimatedSectionHeaderHeight = 0
         return tb
     }()
     
     lazy var searchBar: UISearchBar = {
         
         let bar = UISearchBar()
+        bar.barTintColor = .white
+        bar.layer.cornerRadius = 15
+        bar.layer.masksToBounds = true
+        bar.layer.borderColor = LightTheme().primary.cgColor
+        bar.layer.borderWidth = 1
+        bar.placeholder = "Search"
         
         return bar
     }()
@@ -47,13 +56,14 @@ class SearchViewController: UIViewController {
         super.viewSafeAreaInsetsDidChange()
         let insets = view.safeAreaInsets
         searchBar.snp.makeConstraints { (make) in
-            make.left.right.equalTo(self.view)
-            make.height.equalTo(40)
-            make.top.equalTo(self.view).offset(insets.top)
+            make.left.equalTo(self.view).offset(15)
+            make.right.equalTo(self.view).offset(-15)
+            make.height.equalTo(30)
+            make.top.equalTo(self.view).offset(insets.top + 10)
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.left.right.bottom.equalTo(self.view)
         }
     }
@@ -62,7 +72,6 @@ class SearchViewController: UIViewController {
         self.tableView.mj_footer = MJRefreshAutoNormalFooter()
         self.view.addSubview(tableView)
         self.navigationItem.titleView = segmentControl
-        searchBar.text = ""
         self.view.addSubview(searchBar)
         
     }
@@ -94,9 +103,17 @@ class SearchViewController: UIViewController {
 
         output.userSelected.drive(onNext: { (user) in
             
+            let userInfo = UserInfoViewController()
+            userInfo.username = user.login ?? ""
+            self.navigationController?.pushViewController(userInfo, animated: true)
+            
         }).disposed(by: disposeBag)
         
         output.repoSelected.drive(onNext: { (repo) in
+            
+            let repoDetail = RepositoryDetailController()
+            repoDetail.fullName = repo.fullname ?? ""
+            self.navigationController?.pushViewController(repoDetail, animated: true)
             
         }).disposed(by: disposeBag)
         

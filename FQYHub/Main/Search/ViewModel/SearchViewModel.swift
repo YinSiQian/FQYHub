@@ -57,7 +57,9 @@ extension SearchSelection: SectionModelType {
 
 class SearchViewModel: NSObject {
 
-    var page = 1
+    var repoPage = 1
+    
+    var userPage = 1
     
     struct Input {
         let keyworkTrigger: Observable<String>
@@ -89,57 +91,86 @@ class SearchViewModel: NSObject {
         let repoSearch = BehaviorRelay<RepositorySearchModel>.init(value: RepositorySearchModel())
         let userSearch = BehaviorRelay<UserSearchModel>.init(value: UserSearchModel())
         
-        input.keyworkTrigger.asDriverOnErrorJustComplete().skip(1).debounce(0.5).distinctUntilChanged().asObservable()
-            .bind(to: keyword).disposed(by: disposeBag)
+    input.keyworkTrigger.asDriverOnErrorJustComplete().skip(1).debounce(0.5).distinctUntilChanged().asObservable().bind(to: keyword).disposed(by: disposeBag)
         
-        keyworkDriver.flatMapLatest { (keyword) -> Observable<RxSwift.Event<RepositorySearchModel>> in
-            return singleProvider.searchRepositories(query: keyword, page: self.page).asObservable().materialize()
+        keyworkDriver.filter { (keyword) -> Bool in
+            print("new key word \(keyword) old key \(self.keyword.value)")
+            return !keyword.isEmpty && self.keyword.value != keyword
+            
+        }.flatMapLatest { (keyword) -> Observable<RxSwift.Event<RepositorySearchModel>> in
+            self.repoPage = 1
+            return singleProvider.searchRepositories(query: keyword, page: self.repoPage).asObservable().materialize()
         }.subscribe(onNext: { (event) in
+            
             switch event {
-                case .next(let element):
-                    repoSearch.accept(element)
-                default: break
+            case .next(let element):
+                repoSearch.accept(element)
+                if element.moreData {
+                    self.repoPage += 1
+                }
+            default: break
             }
+            
         }).disposed(by: disposeBag)
         
-        keyworkDriver.flatMapLatest { (keyword) -> Observable<RxSwift.Event<UserSearchModel>> in
+        keyworkDriver.filter { (keyword) -> Bool in
+            return !keyword.isEmpty && self.keyword.value != keyword
             
-            return singleProvider.searchUsers(query: keyword, page: self.page).asObservable().materialize()
+        }.flatMapLatest { (keyword) -> Observable<RxSwift.Event<UserSearchModel>> in
             
+            self.userPage = 1
+            return singleProvider.searchUsers(query: keyword, page: self.userPage).asObservable().materialize()
         }.subscribe(onNext: { (event) in
+                
             switch event {
             case .next(let element):
                 userSearch.accept(element)
+                if element.moreData {
+                    self.userPage += 1
+                }
             default: break
             }
+                
         }).disposed(by: disposeBag)
         
         footerAction.flatMapLatest { () -> Observable<RxSwift.Event<UserSearchModel>> in
             
-            return singleProvider.searchUsers(query: self.keyword.value, page: self.page).asObservable().materialize()
+            return singleProvider.searchUsers(query: self.keyword.value, page: self.userPage).asObservable().materialize()
 
         }.subscribe(onNext: { (event) in
             switch event {
             case .next(let element):
-                userSearch.accept(element)
+                var _element = element
+                _element.items = userSearch.value.items + _element.items
+                userSearch.accept(_element)
+                if element.moreData {
+                    self.userPage += 1
+                }
+             
             default: break
             }
         }).disposed(by: disposeBag)
         
         footerAction.flatMapLatest { () -> Observable<RxSwift.Event<RepositorySearchModel>> in
             
-            return singleProvider.searchRepositories(query: self.keyword.value, page: self.page).asObservable().materialize()
+            return singleProvider.searchRepositories(query: self.keyword.value, page: self.repoPage).asObservable().materialize()
             
             }.subscribe(onNext: { (event) in
                 switch event {
                 case .next(let element):
-                    repoSearch.accept(element)
+                    var _element = element
+                    _element.items = repoSearch.value.items + _element.items
+                    repoSearch.accept(_element)
+                    if _element.moreData {
+                        self.repoPage += 1
+                    }
+                
                 default: break
                 }
             }).disposed(by: disposeBag)
         
         Observable.combineLatest(repoSearch, userSearch, selectionType).map { (repoModel, userModel, selection) -> [SearchSelection] in
-            var elements = [SearchSelection]()
+            var _elements = [SearchSelection]()
             switch selection {
                 case .users:
                     let users = userModel.items.map({ (user) -> SearchSelectionItem in
@@ -147,7 +178,7 @@ class SearchViewModel: NSObject {
                         return SearchSelectionItem.user(cellViewModel: cellViewModel)
                     })
                     if users.count > 0 {
-                        elements.append(SearchSelection.users(items: users))
+                        _elements.append(SearchSelection.users(items: users))
                     }
                 case .repositories:
                     let repos = repoModel.items.map({ (repo) -> SearchSelectionItem in
@@ -155,10 +186,10 @@ class SearchViewModel: NSObject {
                         return SearchSelectionItem.repo(cellViewModel: cellViewModel)
                     })
                     if repos.count > 0 {
-                        elements.append(SearchSelection.repos(items: repos))
+                        _elements.append(SearchSelection.repos(items: repos))
                 }
             }
-            return elements
+            return _elements
         }.bind(to: elements).disposed(by: disposeBag)
         
         
@@ -178,11 +209,16 @@ class SearchViewModel: NSObject {
         
         let footerEndRefresh = Observable.merge( elements.map { _ in true } )
         
-        let noMoreData = elements.flatMap { (model) -> Observable<Bool> in
-            
-            return Observable<Bool>.of(model.count < self.page * Configs.PageHelper.rows)
-            
+        
+        let noMoreData = Observable.combineLatest(selectionType, userSearch, repoSearch).flatMapLatest { (segment, userResult, repoResult) -> Observable<Bool> in
+            switch segment {
+            case .repositories:
+                return Observable<Bool>.of(!repoResult.moreData)
+            case .users:
+                return Observable<Bool>.of(!userResult.moreData)
+            }
         }
+        
         
         let repoDetail = repositorySelected.map { (repo) -> Repository in
             return repo
@@ -192,7 +228,11 @@ class SearchViewModel: NSObject {
             return user
         }.asDriverOnErrorJustComplete()
         
-        return Output(footerEndRefresh: footerEndRefresh, noMoreData: noMoreData, searchSelection: elements, repoSelected: repoDetail, userSelected: userDetail)
+        return Output(footerEndRefresh: footerEndRefresh,
+                      noMoreData: noMoreData,
+                      searchSelection: elements,
+                      repoSelected: repoDetail,
+                      userSelected: userDetail)
         
     }
     
