@@ -20,6 +20,7 @@ public enum TrendingSectionItem {
 }
 
 extension TrendingSection: SectionModelType {
+    
     init(original: TrendingSection, items: [TrendingSectionItem]) {
         switch original {
             case .repositories(let items): self = .repositories(items: items)

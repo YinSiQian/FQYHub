@@ -52,6 +52,8 @@
 		8B5BD5E122CF9BEB007EC605 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E022CF9BEB007EC605 /* Repository.swift */; };
 		8B5BD5E322CF9D9E007EC605 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E222CF9D9E007EC605 /* GithubAPI.swift */; };
 		8B5BD5E522CFA259007EC605 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BD5E422CFA259007EC605 /* RepositoryDetailViewModel.swift */; };
+		8B819F8D22DCC12500ADC2EC /* UserSearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B819F8C22DCC12500ADC2EC /* UserSearchCellViewModel.swift */; };
+		8B819F8F22DCD16800ADC2EC /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B819F8E22DCD16800ADC2EC /* SearchUserCell.swift */; };
 		8BDC664922D6D5DB00AF70E4 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */; };
 		8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664A22D6E9E500AF70E4 /* MineCell.swift */; };
 		8BDC664D22D71FDD00AF70E4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */; };
@@ -119,6 +121,8 @@
 		8B5BD5E022CF9BEB007EC605 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		8B5BD5E222CF9D9E007EC605 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		8B5BD5E422CFA259007EC605 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		8B819F8C22DCC12500ADC2EC /* UserSearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCellViewModel.swift; sourceTree = "<group>"; };
+		8B819F8E22DCD16800ADC2EC /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUserCell.swift; path = FQYHub/Main/Search/ViewModel/SearchUserCell.swift; sourceTree = SOURCE_ROOT; };
 		8BDC664822D6D5DB00AF70E4 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		8BDC664A22D6E9E500AF70E4 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		8BDC664C22D71FDD00AF70E4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				8B09D65022DC7FC500E5FFB9 /* SearchViewModel.swift */,
+				8B819F8C22DCC12500ADC2EC /* UserSearchCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 		8B09D64E22DC7F8100E5FFB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B819F8E22DCD16800ADC2EC /* SearchUserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
 				8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */,
+				8B819F8F22DCD16800ADC2EC /* SearchUserCell.swift in Sources */,
 				8B077DDD22C4A351000EED2D /* GithubAPIs.swift in Sources */,
 				8BDC665522D7324B00AF70E4 /* MJRefresh+Extension.swift in Sources */,
 				8B077DB922C45EAD000EED2D /* AppDelegate.swift in Sources */,
@@ -676,6 +683,7 @@
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
 				8B09D65322DC7FE400E5FFB9 /* UserSearchModel.swift in Sources */,
 				8B077DDB22C475CE000EED2D /* User.swift in Sources */,
+				8B819F8D22DCC12500ADC2EC /* UserSearchCellViewModel.swift in Sources */,
 				8B5BD5E322CF9D9E007EC605 /* GithubAPI.swift in Sources */,
 				8BFE828E22D5E2E8003EA515 /* TokenManager.swift in Sources */,
 				8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */,
