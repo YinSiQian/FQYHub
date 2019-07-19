@@ -37,6 +37,13 @@ class NetworkManager<Target> where Target: Moya.TargetType {
         
         print("url --->\(token.baseURL)\(token.path)")
         print("http method --->\(token.method.rawValue)")
+        if token is GithubAPI {
+            let _git = token as! GithubAPI
+            print("parameters ---->\(_git.parameters ?? [:])")
+        } else {
+            let _trending = token as! TrendingAPI
+            print("parameters ---->\(_trending.parameters ?? [:])")
+        }
         
         return online
             .ignore(value: false)  // Wait until we're online

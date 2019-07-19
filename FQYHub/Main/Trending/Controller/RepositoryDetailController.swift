@@ -111,6 +111,31 @@ class RepositoryDetailController: BaseViewController {
             
         }).disposed(by: disposeBag)
         
+        headerView.stars.rx.tap.subscribe(onNext: { [weak self] in
+            
+            let stars = StarsViewController()
+            stars.fullname = self?.repo?.fullname ?? ""
+            self?.navigationController?.pushViewController(stars, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
+        
+        headerView.watchers.rx.tap.subscribe(onNext: { [weak self] in
+            
+            let watch = WatchersViewController()
+            watch.fullname = self?.repo?.fullname ?? ""
+            self?.navigationController?.pushViewController(watch, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
+        headerView.forks.rx.tap.subscribe(onNext: { [weak self] in
+            
+            let forks = ForksViewController()
+            forks.fullname = self?.repo?.fullname ?? ""
+            self?.navigationController?.pushViewController(forks, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
         titles = ["Author", "Branch", "Created", "Updated", "License", "Issues", "Contributors"]
         contents = [repo?.owner?.login ?? "---", "master", "\(repo?.createdAt?.stringValue ?? "---")", "\(repo?.updatedAt?.stringValue ?? "---")", repo?.license?.name ?? "---", "\(repo?.openIssues ?? 0)", "\(repo?.contributorsCount ?? 0)"]
         

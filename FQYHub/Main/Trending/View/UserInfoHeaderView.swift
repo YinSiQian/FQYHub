@@ -18,11 +18,11 @@ class UserInfoHeaderView: UIView {
     
     var effectView: UIVisualEffectView!
     
-    var repos: UILabel!
+    var repos: UIButton!
     
-    var followers: UILabel!
+    var followers: UIButton!
     
-    var following: UILabel!
+    var following: UIButton!
     
     var email: UILabel!
     
@@ -37,9 +37,11 @@ class UserInfoHeaderView: UIView {
             backImage.kf.setImage(with: user?.avatarUrl?.url, placeholder: Configs.DefaultSetting.placeholderImage)
             avatar.kf.setImage(with: user?.avatarUrl?.url, placeholder: Configs.DefaultSetting.placeholderImage)
             name.text = user?.login
-            repos.text = "repos \n \(user?.repositoriesCount ?? 0)"
-            followers.text = "followers \n \(user?.followers ?? 0)"
-            following.text = "following \n \(user?.following ?? 0)"
+
+            
+            repos.setTitle("repos \n \(user?.repositoriesCount ?? 0)", for: .normal)
+            followers.setTitle("followers \n \(user?.followers ?? 0)", for: .normal)
+            following.setTitle("following \n \(user?.following ?? 0)", for: .normal)
             
             email.text = "Email: \(user?.email ?? "---")"
             blog.text = "Blog: \(user?.blog ?? "---")"
@@ -80,34 +82,34 @@ class UserInfoHeaderView: UIView {
         name.font = .systemFont(ofSize: 14)
         addSubview(name)
         
-        repos = UILabel()
-        repos.textColor = .white
-        repos.font = .systemFont(ofSize: 14)
+        repos = UIButton()
+        repos.setTitleColor(.white, for: .normal)
+        repos.titleLabel?.font = .systemFont(ofSize: 14)
         repos.backgroundColor = LightTheme().primary
-        repos.textAlignment = .center
+        repos.titleLabel?.textAlignment = .center
         repos.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
         repos.layer.masksToBounds = true
-        repos.numberOfLines = 2
+        repos.titleLabel?.numberOfLines = 2
         addSubview(repos)
         
-        followers = UILabel()
-        followers.textColor = .white
-        followers.font = .systemFont(ofSize: 14)
+        followers = UIButton()
+        followers.setTitleColor(.white, for: .normal)
+        followers.titleLabel?.font = .systemFont(ofSize: 14)
         followers.backgroundColor = LightTheme().primary
-        followers.textAlignment = .center
+        followers.titleLabel?.textAlignment = .center
         followers.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
         followers.layer.masksToBounds = true
-        followers.numberOfLines = 2
+        followers.titleLabel?.numberOfLines = 2
         addSubview(followers)
         
-        following = UILabel()
-        following.textColor = .white
-        following.font = .systemFont(ofSize: 14)
+        following = UIButton()
+        following.setTitleColor(.white, for: .normal)
+        following.titleLabel?.font = .systemFont(ofSize: 14)
         following.backgroundColor = LightTheme().primary
-        following.textAlignment = .center
+        following.titleLabel?.textAlignment = .center
         following.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
         following.layer.masksToBounds = true
-        following.numberOfLines = 2
+        following.titleLabel?.numberOfLines = 2
         addSubview(following)
         
         email = UILabel()

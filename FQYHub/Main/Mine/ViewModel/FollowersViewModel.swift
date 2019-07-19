@@ -56,6 +56,9 @@ class FollowersViewModel: NSObject {
                 elements.append(cellModel)
             }
             datas.accept(datas.value + elements)
+            if users.count > 0 {
+                self.page += 1
+            }
             
         }).disposed(by: disposeBag)
         

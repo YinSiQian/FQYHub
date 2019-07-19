@@ -155,19 +155,19 @@ class SearchViewModel: NSObject {
             
             return singleProvider.searchRepositories(query: self.keyword.value, page: self.repoPage).asObservable().materialize()
             
-            }.subscribe(onNext: { (event) in
-                switch event {
-                case .next(let element):
-                    var _element = element
-                    _element.items = repoSearch.value.items + _element.items
-                    repoSearch.accept(_element)
-                    if _element.moreData {
-                        self.repoPage += 1
-                    }
-                
-                default: break
+        }.subscribe(onNext: { (event) in
+            switch event {
+            case .next(let element):
+                var _element = element
+                _element.items = repoSearch.value.items + _element.items
+                repoSearch.accept(_element)
+                if _element.moreData {
+                    self.repoPage += 1
                 }
-            }).disposed(by: disposeBag)
+            
+            default: break
+            }
+        }).disposed(by: disposeBag)
         
         Observable.combineLatest(repoSearch, userSearch, selectionType).map { (repoModel, userModel, selection) -> [SearchSelection] in
             var _elements = [SearchSelection]()

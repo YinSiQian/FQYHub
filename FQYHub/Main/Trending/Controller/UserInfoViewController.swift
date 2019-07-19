@@ -47,6 +47,30 @@ class UserInfoViewController: BaseViewController {
         headerView.user = self.user
         view.addSubview(headerView)
         
+        headerView.repos.rx.tap.subscribe(onNext: { () in
+            
+            let repos = UserReposViewController()
+            repos.username = self.user?.login ?? ""
+            self.navigationController?.pushViewController(repos, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
+        headerView.followers.rx.tap.subscribe(onNext: { () in
+            
+            let followers = FollowerListViewController()
+            followers.username = self.user?.login ?? ""
+            self.navigationController?.pushViewController(followers, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
+        headerView.following.rx.tap.subscribe(onNext: { () in
+            
+            let followers = FollowingListViewController()
+            followers.username = self.user?.login ?? ""
+            self.navigationController?.pushViewController(followers, animated: true)
+            
+        }).disposed(by: disposeBag)
+        
         noticeView = UILabel()
         noticeView.text = "See more infomation about user >"
         noticeView.textAlignment = .center

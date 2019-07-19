@@ -99,6 +99,19 @@ extension RequestAPI {
         return requestArray(.userFollowing(username: username, page: page), T: User.self)
     }
     
+    func watchers(fullname: String, page: Int) -> Single<[User]> {
+        return requestArray(.watchers(fullname: fullname, page: page), T: User.self)
+    }
+    
+    func stargazers(fullname: String, page: Int) -> Single<[User]> {
+        return requestArray(.stargazers(fullname: fullname, page: page), T: User.self)
+    }
+    
+    func forks(fullname: String, page: Int) -> Single<[Repository]> {
+        return requestArray(.forks(fullname: fullname, page: page), T: Repository.self)
+    }
+
+    
 }
 
 extension RequestAPI {

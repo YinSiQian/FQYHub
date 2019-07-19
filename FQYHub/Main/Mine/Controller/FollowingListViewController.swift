@@ -54,7 +54,7 @@ class FollowingListViewController: BaseViewController {
             let cell = TrendingUserCell.cell(with: tableView)
             cell.bind(viewModel: element)
             return cell
-            }.disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         output.footerEndRefresh.bind(to: self.tableView.mj_footer.rx.endRefreshing).disposed(by: disposeBag)
         

@@ -67,6 +67,12 @@
 		8BDEE80622CDF632006FB3AC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80522CDF632006FB3AC /* ThemeManager.swift */; };
 		8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */; };
 		8BDEE80A22CE00FE006FB3AC /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE80922CE00FE006FB3AC /* BaseCell.swift */; };
+		8BEE6C7E22E1738E00D735F1 /* StarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C7D22E1738E00D735F1 /* StarsViewController.swift */; };
+		8BEE6C8022E1739C00D735F1 /* WatchersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C7F22E1739C00D735F1 /* WatchersViewController.swift */; };
+		8BEE6C8222E173A800D735F1 /* ForksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C8122E173A800D735F1 /* ForksViewController.swift */; };
+		8BEE6C8422E1757D00D735F1 /* StarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C8322E1757D00D735F1 /* StarsViewModel.swift */; };
+		8BEE6C8622E1758F00D735F1 /* ForksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C8522E1758F00D735F1 /* ForksViewModel.swift */; };
+		8BEE6C8822E1759B00D735F1 /* WatchersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE6C8722E1759B00D735F1 /* WatchersViewModel.swift */; };
 		8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */; };
 		8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */; };
 		8BFE828A22D5C3F3003EA515 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE828922D5C3F3003EA515 /* Date+Extension.swift */; };
@@ -138,6 +144,12 @@
 		8BDEE80522CDF632006FB3AC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		8BDEE80722CDFC2A006FB3AC /* TrendingRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoriesCell.swift; sourceTree = "<group>"; };
 		8BDEE80922CE00FE006FB3AC /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		8BEE6C7D22E1738E00D735F1 /* StarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsViewController.swift; sourceTree = "<group>"; };
+		8BEE6C7F22E1739C00D735F1 /* WatchersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchersViewController.swift; sourceTree = "<group>"; };
+		8BEE6C8122E173A800D735F1 /* ForksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForksViewController.swift; sourceTree = "<group>"; };
+		8BEE6C8322E1757D00D735F1 /* StarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsViewModel.swift; sourceTree = "<group>"; };
+		8BEE6C8522E1758F00D735F1 /* ForksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForksViewModel.swift; sourceTree = "<group>"; };
+		8BEE6C8722E1759B00D735F1 /* WatchersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchersViewModel.swift; sourceTree = "<group>"; };
 		8BFE711D22D4815800F3761C /* RepositoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryHeaderView.swift; sourceTree = "<group>"; };
 		8BFE711F22D4930E00F3761C /* RepositoryInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInfoCell.swift; sourceTree = "<group>"; };
 		8BFE828922D5C3F3003EA515 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -462,6 +474,9 @@
 				8BDC665022D72F0300AF70E4 /* UserReposViewModel.swift */,
 				8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */,
 				8B38C1D322D833C40069D4F6 /* FollowingViewModel.swift */,
+				8BEE6C8322E1757D00D735F1 /* StarsViewModel.swift */,
+				8BEE6C8522E1758F00D735F1 /* ForksViewModel.swift */,
+				8BEE6C8722E1759B00D735F1 /* WatchersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -473,6 +488,9 @@
 				8BDC664E22D72D3900AF70E4 /* UserReposViewController.swift */,
 				8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */,
 				8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */,
+				8BEE6C7D22E1738E00D735F1 /* StarsViewController.swift */,
+				8BEE6C7F22E1739C00D735F1 /* WatchersViewController.swift */,
+				8BEE6C8122E173A800D735F1 /* ForksViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -651,6 +669,7 @@
 				8B077DD322C4672E000EED2D /* UIView+Extension.swift in Sources */,
 				8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */,
 				8B3F9FCD22CF500700D8A4AF /* RepositoryDetailController.swift in Sources */,
+				8BEE6C8422E1757D00D735F1 /* StarsViewModel.swift in Sources */,
 				8BFE828C22D5DAF5003EA515 /* Token.swift in Sources */,
 				8B38C1D222D833B30069D4F6 /* FollowersViewModel.swift in Sources */,
 				8B49E4ED22D3766E009D5E07 /* BaseViewController.swift in Sources */,
@@ -669,6 +688,7 @@
 				8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */,
 				8BDC664F22D72D3900AF70E4 /* UserReposViewController.swift in Sources */,
 				8B077DE722C4A90F000EED2D /* NetworkManager.swift in Sources */,
+				8BEE6C8822E1759B00D735F1 /* WatchersViewModel.swift in Sources */,
 				8B0BB7D522C5A19100DC551D /* Observable+Operators.swift in Sources */,
 				8BFE711E22D4815800F3761C /* RepositoryHeaderView.swift in Sources */,
 				8B819F8F22DCD16800ADC2EC /* SearchUserCell.swift in Sources */,
@@ -685,11 +705,14 @@
 				8BDC664922D6D5DB00AF70E4 /* MineViewModel.swift in Sources */,
 				8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */,
 				8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */,
+				8BEE6C7E22E1738E00D735F1 /* StarsViewController.swift in Sources */,
 				8B38C1D422D833C40069D4F6 /* FollowingViewModel.swift in Sources */,
 				8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */,
 				8B09D65122DC7FC500E5FFB9 /* SearchViewModel.swift in Sources */,
+				8BEE6C8022E1739C00D735F1 /* WatchersViewController.swift in Sources */,
 				8BDEE80422CDEE52006FB3AC /* MineViewController.swift in Sources */,
 				8B077DF022C4C537000EED2D /* RequestAPI.swift in Sources */,
+				8BEE6C8622E1758F00D735F1 /* ForksViewModel.swift in Sources */,
 				8B077DF222C4C56B000EED2D /* API.swift in Sources */,
 				8B09D65322DC7FE400E5FFB9 /* UserSearchModel.swift in Sources */,
 				8B077DDB22C475CE000EED2D /* User.swift in Sources */,
@@ -697,6 +720,7 @@
 				8B5BD5E322CF9D9E007EC605 /* GithubAPI.swift in Sources */,
 				8BFE828E22D5E2E8003EA515 /* TokenManager.swift in Sources */,
 				8B3F9FC022CF30E700D8A4AF /* TrendingRepositoryCellViewModel.swift in Sources */,
+				8BEE6C8222E173A800D735F1 /* ForksViewController.swift in Sources */,
 				8BDEE80822CDFC2A006FB3AC /* TrendingRepositoriesCell.swift in Sources */,
 				8B3F9FC222CF339F00D8A4AF /* TrendingUserCellViewModel.swift in Sources */,
 				8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */,

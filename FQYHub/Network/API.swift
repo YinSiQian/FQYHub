@@ -33,4 +33,10 @@ protocol API {
     func searchUsers(query: String, page: Int) -> Single<UserSearchModel>
     
     func searchRepositories(query: String, page: Int) -> Single<RepositorySearchModel>
+    
+    func watchers(fullname: String, page: Int) -> Single<[User]>
+    
+    func stargazers(fullname: String, page: Int) -> Single<[User]>
+    
+    func forks(fullname: String, page: Int) -> Single<[Repository]>
 }

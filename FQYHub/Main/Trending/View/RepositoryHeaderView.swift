@@ -18,11 +18,11 @@ class RepositoryHeaderView: UIView {
     
     var info: UILabel!
     
-    var watchers: UILabel!
+    var watchers: UIButton!
     
-    var stars: UILabel!
+    var stars: UIButton!
     
-    var forks: UILabel!
+    var forks: UIButton!
     
     var effectView: UIVisualEffectView!
     
@@ -31,10 +31,9 @@ class RepositoryHeaderView: UIView {
             backImage.kf.setImage(with: model?.owner?.avatarUrl?.url, placeholder: Configs.DefaultSetting.placeholderImage)
             avatar.kf.setBackgroundImage(with: model?.owner?.avatarUrl?.url, for: .normal)
             info.text = model?.descriptionField
-            watchers.text = "watchers \n \(model?.watchers ?? 0)"
-            stars.text = "stars \n \(model?.stargazersCount ?? 0)"
-            forks.text = "forks \n \(model?.forks ?? 0)"
-
+            watchers.setTitle("watchers \n \(model?.watchers ?? 0)", for: .normal)
+            stars.setTitle("stars \n \(model?.stargazersCount ?? 0)", for: .normal)
+            forks.setTitle("forks \n \(model?.forks ?? 0)", for: .normal)
         }
     }
     
@@ -72,35 +71,35 @@ class RepositoryHeaderView: UIView {
         info.numberOfLines = 0
         addSubview(info)
         
-        stars = UILabel()
-        stars.textColor = .white
-        stars.font = .systemFont(ofSize: 14)
+        stars = UIButton()
+        stars.setTitleColor(.white, for: .normal)
+        stars.titleLabel?.font = .systemFont(ofSize: 14)
         stars.backgroundColor = LightTheme().primary
-        stars.textAlignment = .center
+        stars.titleLabel?.textAlignment = .center
         stars.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
         stars.layer.masksToBounds = true
-        stars.numberOfLines = 2
+        stars.titleLabel?.numberOfLines = 2
         addSubview(stars)
         
-        forks = UILabel()
-        forks.textColor = .white
-        forks.font = .systemFont(ofSize: 14)
-        forks.backgroundColor = LightTheme().primary
-        forks.textAlignment = .center
-        forks.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
-        forks.layer.masksToBounds = true
-        forks.numberOfLines = 2
-        addSubview(forks)
-        
-        watchers = UILabel()
-        watchers.textColor = .white
-        watchers.font = .systemFont(ofSize: 14)
+        watchers = UIButton()
+        watchers.setTitleColor(.white, for: .normal)
+        watchers.titleLabel?.font = .systemFont(ofSize: 14)
         watchers.backgroundColor = LightTheme().primary
-        watchers.textAlignment = .center
+        watchers.titleLabel?.textAlignment = .center
         watchers.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
         watchers.layer.masksToBounds = true
-        watchers.numberOfLines = 2
+        watchers.titleLabel?.numberOfLines = 2
         addSubview(watchers)
+        
+        forks = UIButton()
+        forks.setTitleColor(.white, for: .normal)
+        forks.titleLabel?.font = .systemFont(ofSize: 14)
+        forks.backgroundColor = LightTheme().primary
+        forks.titleLabel?.textAlignment = .center
+        forks.layer.cornerRadius = Configs.BaseDimensions.cornerRadius
+        forks.layer.masksToBounds = true
+        forks.titleLabel?.numberOfLines = 2
+        addSubview(forks)
         
     }
     

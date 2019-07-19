@@ -18,8 +18,9 @@ enum GithubAPI {
     case userFollowing(username: String, page: Int)
     case searchRepos(query: String, page: Int)
     case searchUsers(query: String, page: Int)
-
-
+    case watchers(fullname: String, page: Int)
+    case stargazers(fullname: String, page: Int)
+    case forks(fullname: String, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -45,6 +46,12 @@ extension GithubAPI: TargetType {
             return "search/repositories"
         case .searchUsers(query: _, page: _):
             return "search/users"
+        case .watchers(let fullname, _):
+            return "repos/\(fullname)/subscribers"
+        case .stargazers(let fullname, _):
+            return "repos/\(fullname)/stargazers"
+        case .forks(let fullname, _):
+            return "repos/\(fullname)/forks"
         }
     }
     
@@ -76,6 +83,13 @@ extension GithubAPI: TargetType {
             params["sort"] = ""
             params["order"] = ""
             params["page"] = page
+        case .watchers(_, let page):
+            params["page"] = page
+        case .stargazers(_, let page):
+            params["page"] = page
+        case .forks(_, let page):
+            params["page"] = page
+            
         default: break
         }
         return params

@@ -1,8 +1,8 @@
 //
-//  FollowingViewModel.swift
+//  StarsViewModel.swift
 //  FQYHub
 //
-//  Created by yinsiqian on 2019/7/12.
+//  Created by yinsiqian on 2019/7/19.
 //  Copyright © 2019 FengQingYang. All rights reserved.
 //
 
@@ -10,47 +10,45 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FollowingViewModel: NSObject {
-
+class StarsViewModel: NSObject {
     
     var page = 1
     
     struct Input {
-        let username: String
-        let footerRefresh: Observable<Void>
+        let fullname: String
+        let footerAction: Observable<Void>
         let selection: Driver<TrendingUserCellViewModel>
     }
     
     struct Output {
-        let users: BehaviorRelay<[TrendingUserCellViewModel]>
-        let footerEndRefresh: Observable<Bool>
+        let endRefresh: Observable<Bool>
         let noMoreData: Observable<Bool>
+        let starsElements: BehaviorRelay<[TrendingUserCellViewModel]>
         let userSelection: Driver<String>
     }
     
     func transform(input: Input) -> Output {
         
-        let name = input.username
-        let footer = input.footerRefresh
-        let selection = input.selection
+        let name = input.fullname
+        let userSelection = input.selection
         
-        let userSelection = PublishSubject<String>()
         let datas = BehaviorRelay<[TrendingUserCellViewModel]>(value: [])
-        
-        selection.drive(onNext: { (cellViewModel) in
+
+        let userSelectionValue = PublishSubject<String>()
+
+        userSelection.drive(onNext: { (cellViewModel) in
             
             cellViewModel.name.drive(onNext: { (name) in
-                userSelection.onNext(name)
+                userSelectionValue.onNext(name)
                 
             }).disposed(by: disposeBag)
-            
         }).disposed(by: disposeBag)
         
-        let data = footer.flatMapLatest { () -> Observable<[User]> in
-            return singleProvider.userFollowing(username: name, page: self.page).asObservable()
-        }
-        
-        data.subscribe(onNext: { (users) in
+        input.footerAction.flatMapLatest { () -> Observable<[User]> in
+            return singleProvider.stargazers(fullname: name, page: self.page).asObservable()
+            
+        }.subscribe(onNext: { (users) in
+            
             var elements = [TrendingUserCellViewModel]()
             for user in users {
                 let cellModel = TrendingUserCellViewModel(with: user)
@@ -67,13 +65,13 @@ class FollowingViewModel: NSObject {
         
         let noMoreData = datas.flatMap { (models) -> Observable<Bool> in
             return Observable<Bool>.of(models.count < self.page * Configs.PageHelper.rows)
-            
         }
         
-        return Output(users: datas,
-                      footerEndRefresh: footerEndRefresh,
+        return Output(endRefresh: footerEndRefresh,
                       noMoreData: noMoreData,
-                      userSelection: userSelection.asDriverOnErrorJustComplete())
-        
+                      starsElements: datas,
+                      userSelection: userSelectionValue.asDriverOnErrorJustComplete())
+
     }
+    
 }

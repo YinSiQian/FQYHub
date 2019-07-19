@@ -12,7 +12,7 @@ import RxSwift
 import MJRefresh
 import RxDataSources
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
     lazy var segmentControl: UISegmentedControl = {
         let segment = UISegmentedControl(items: [TrendingSearchTypeSegments.repositories.currentTitle, TrendingSearchTypeSegments.users.currentTitle])

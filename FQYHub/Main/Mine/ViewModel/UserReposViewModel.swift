@@ -60,10 +60,10 @@ class UserReposViewModel: NSObject {
             for repo in _repos {
                 elements.append(TrendingRepositoryCellViewModel(with: repo))
             }
+            self.repos.accept(self.repos.value + elements)
             if elements.count > 0 {
                 self.page += 1
             }
-            self.repos.accept(self.repos.value + elements)
             
         }).disposed(by: disposeBag)
         
