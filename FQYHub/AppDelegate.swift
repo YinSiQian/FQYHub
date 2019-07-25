@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         //需要IDFA 功能，定向投放广告功能
         //let advertisingId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        JPUSHService.setup(withOption: launchOptions, appKey: Keys.jpush.appId, channel: "App Store", apsForProduction: false, advertisingIdentifier: nil)
+        JPUSHService.setup(withOption: launchOptions, appKey: Keys.jpush.appId, channel: "App Store", apsForProduction: true, advertisingIdentifier: nil)
         
         return true
     }

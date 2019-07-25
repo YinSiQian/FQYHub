@@ -35,6 +35,7 @@
 		8B1A5E1522D4D3A300D572F9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */; };
 		8B1A5E1722D4D95300D572F9 /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */; };
 		8B1A5E1922D4E87B00D572F9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */; };
+		8B2EF0E222E3675900D4F38C /* TuiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2EF0E122E3675900D4F38C /* TuiVC.m */; };
 		8B38C1CE22D82F920069D4F6 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */; };
 		8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */; };
 		8B38C1D222D833B30069D4F6 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */; };
@@ -110,6 +111,8 @@
 		8B1A5E1422D4D3A300D572F9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		8B1A5E1622D4D95300D572F9 /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
 		8B1A5E1822D4E87B00D572F9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		8B2EF0E022E3675900D4F38C /* TuiVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TuiVC.h; sourceTree = "<group>"; };
+		8B2EF0E122E3675900D4F38C /* TuiVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TuiVC.m; sourceTree = "<group>"; };
 		8B38C1CD22D82F920069D4F6 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 		8B38C1CF22D82FAB0069D4F6 /* FollowingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListViewController.swift; sourceTree = "<group>"; };
 		8B38C1D122D833B30069D4F6 /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 		8B077DCA22C464B2000EED2D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				8B2EF0E022E3675900D4F38C /* TuiVC.h */,
+				8B2EF0E122E3675900D4F38C /* TuiVC.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				8BFE712022D4930E00F3761C /* RepositoryInfoCell.swift in Sources */,
 				8B38C1D022D82FAB0069D4F6 /* FollowingListViewController.swift in Sources */,
 				8BEE6C7E22E1738E00D735F1 /* StarsViewController.swift in Sources */,
+				8B2EF0E222E3675900D4F38C /* TuiVC.m in Sources */,
 				8B38C1D422D833C40069D4F6 /* FollowingViewModel.swift in Sources */,
 				8BDC664B22D6E9E500AF70E4 /* MineCell.swift in Sources */,
 				8B09D65122DC7FC500E5FFB9 /* SearchViewModel.swift in Sources */,
@@ -874,6 +880,7 @@
 			baseConfigurationReference = D4A2D619C084A2334CE2EDCB /* Pods-FQYHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FQYHub/FQYHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -898,6 +905,7 @@
 			baseConfigurationReference = D86DFFCB6D5AE58E07A3C085 /* Pods-FQYHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FQYHub/FQYHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;

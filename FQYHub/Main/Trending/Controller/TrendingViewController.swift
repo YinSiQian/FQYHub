@@ -40,6 +40,7 @@ class TrendingViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
         bindViewModel()
+        TuiVC.appkey("2bbb72b36f01b", vc: self)
     }
     
     override func viewSafeAreaInsetsDidChange() {
